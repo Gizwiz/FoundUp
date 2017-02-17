@@ -42,7 +42,7 @@ echo "Creating User table if not already existing...<br>";
 
 $sql = "CREATE TABLE IF NOT EXISTS User (
 
-	 user_id int(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	 user_id int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	 user_email varchar(255),
 	 user_password varchar(255),
 	 user_firstname varchar(64),
@@ -52,7 +52,7 @@ $sql = "CREATE TABLE IF NOT EXISTS User (
 	 user_avatar varchar(255),
 	 user_bio text,
 	 user_dob date,
-	 user_profession text,
+	 user_profession int UNSIGNED,
 	 user_gender varchar(32),
 	 user_maritalstatus varchar(32),
 	 user_address text,

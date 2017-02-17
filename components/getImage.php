@@ -18,9 +18,8 @@
 
 	}
 
-	  echo $user_avatar;
-
-	  
 ?>
-	<img src="<?=$user_avatar ?>" alt="aa">
+
+
+	
 	

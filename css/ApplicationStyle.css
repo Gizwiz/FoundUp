@@ -20,20 +20,62 @@ h6{
 
 /*myProfile*/
 
-#userInfo{
+
+
+#myInfo{
 	margin-top: 6%;
 	border-top: solid 1px;
-	padding-top: 1%;
+	text-align: left;
 }
 
-#userAvatar{
-	width:8em;
-	height:8em;
-	margin-left: 2%;
+#myInfo img{
+	display:block;
+	margin: auto;
+	margin-top: 10%;
+	width: 18em;
+	height: 18em;
+
 }
 
+#myInfo input{
+	background-color: white;
+	border: 1px solid black;
+	margin-top: 55%;
+}
+#myInfo input:hover{
+	background-color: #c4e6ff;
+	border: 1px solid black;
+	margin-top: 55%;
+}
 
+#profession {
+	color: dodgerblue; 
+}
 
+/*editMyProfile*/
+#myInfEdit{
+	margin-top: 6%;
+	border-top: solid 1px;
+	text-align: center;
+}
+
+#myInfEdit img{
+	display:block;
+	margin: auto;
+	margin-top: 10%;
+	width: 18em;
+	height: 18em;
+
+}
+#myInfEdit form{
+	display: inline-block;
+	margin-left: 10%;
+	text-align: left;
+}
+#myInfEdit input{
+	width:90%;
+	margin-bottom: 1%;
+}
 
 
 .navbar-custom {
@@ -69,7 +111,11 @@ h6{
 	
 }
 @media only screen and (max-width: 768px) {
+#myInfo{
+	margin-top: 12%;
+	border-top: solid 1px;
 
+}
   
 .btn-default{
 	background-color: black;
