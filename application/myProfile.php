@@ -1,4 +1,28 @@
-<?php include '../components/authentication.php' ?>
-<?php include '../components/session-check.php' ?>
+<?php require '../components/authentication.php' ?>
+<?php require '../components/session-check.php' ?>
+<?php include '../database/dbconnect.php' ?>
 
-<?php include '../controllers/navApplication.php'; ?>
+<?php include '../controllers/headApplication.php' ?>
+
+<body>
+	<?php include '../controllers/navApplication.php'; ?>
+	
+	<div class="container-fluid">
+	
+		<div class="row" id="userInfo">
+			<div class = "col-lg-12">
+				<img src= "getImage.php?id=".$_SESSION['user_username'] alt="userAvatar" id="userAvatar"/>
+			</div>
+		</div>
+		
+		
+		
+		
+	</div>
+	
+	<form action="../components/upload.php" method="post" enctype="multipart/form-data">
+		<input type="file" name="fileToUpload" id ="fileToUpload">
+		<input type="submit" value="Upload" name="submit">
+	</form>
+	
+</body>

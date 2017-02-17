@@ -72,14 +72,18 @@ echo "Inputting preset data<br>";
 $sql = "INSERT INTO user (
 user_email, 
 user_firstname, 
-user_lastname
+user_lastname,
+user_phonenumber,
+user_username
 )
 
 VALUES 
 (
 'Kana@Kana.fi', 
 'Kana',
-'Kanamaa'
+'Kanamaa',
+'01020304',
+'kanakanamaa'
 )";
 
 if ($conn->query($sql) === TRUE) {
