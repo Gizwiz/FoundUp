@@ -11,7 +11,8 @@
 	
 		<div class="row" id="userInfo">
 			<div class = "col-lg-12">
-				<img src= "getImage.php?id=".$_SESSION['user_username'] alt="userAvatar" id="userAvatar"/>
+				
+				<?php include '../components/getImage.php' ?>
 			</div>
 		</div>
 		
