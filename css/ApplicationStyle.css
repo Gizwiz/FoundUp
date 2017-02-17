@@ -18,7 +18,19 @@ h6{
 	
 }
 
+/*myProfile*/
 
+#userInfo{
+	margin-top: 6%;
+	border-top: solid 1px;
+	padding-top: 1%;
+}
+
+#userAvatar{
+	width:8em;
+	height:8em;
+	margin-left: 2%;
+}
 
 
 
