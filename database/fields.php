@@ -11,35 +11,35 @@
 	}
 
 	$sql = "
-		INSERT INTO dield_name (field_id, field_name)
+		INSERT INTO field_name (field_id, field_name)
 		VALUES ($mathematics_field_id, 'Mathematics');
 	";
 	$sql .= "
-		INSERT INTO dield_name (field_id, field_name)
+		INSERT INTO field_name (field_id, field_name)
 		VALUES ($IT_field_id, 'Information Technology (IT)');
 	";
 	$sql .= "
-		INSERT INTO dield_name (field_id, field_name)
+		INSERT INTO field_name (field_id, field_name)
 		VALUES ($engineering_field_id, 'Engineering and Technology');
 	";
 	$sql .= "
-		INSERT INTO dield_name (field_id, field_name)
+		INSERT INTO field_name (field_id, field_name)
 		VALUES ($medical_field_id, 'Medical and Health Sciences');
 	";
 	$sql .= "
-		INSERT INTO dield_name (field_id, field_name)
+		INSERT INTO field_name (field_id, field_name)
 		VALUES ($agricultural_field_id, 'Agricultural Sciences');
 	";
 	$sql .= "
-		INSERT INTO dield_name (field_id, field_name)
+		INSERT INTO field_name (field_id, field_name)
 		VALUES ($social_field_id, 'Social Sciences');
 	";
 	$sql .= "
-		INSERT INTO dield_name (field_id, field_name)
+		INSERT INTO field_name (field_id, field_name)
 		VALUES ($humanities_field_id, 'Humanities');
 	";
 	$sql .= "
-		INSERT INTO dield_name (field_id, field_name)
+		INSERT INTO field_name (field_id, field_name)
 		VALUES ($designer_field_id, 'Designer');
 	";
 
