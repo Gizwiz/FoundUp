@@ -1,6 +1,11 @@
+
 <?php
 	
 	session_start();
+
+	if($_SESSION['user_username']){
+		header('location: ../application/userFrontPage.php');	
+	}
 
 	if(isset($_REQUEST['submitLogin']) && !empty($_REQUEST['email']) && !empty($_REQUEST['password'])){
 		require '../database/dbconnect.php';
@@ -17,7 +22,7 @@
 				if ($row['user_email']===$user_email && $row['user_password']===$user_password);
 				$user_username = $row['user_username'];
 				$_SESSION['user_username'] = $user_username;
-				header('Location: ../application/userFrontpage.php?user='.$user_username);
+				header('location: ../application/userFrontpage.php?user='.$user_username);
 			}
 		} else {
 			echo 'Login Error';

@@ -17,14 +17,18 @@
              <!-- Collect the nav links, forms, and other content for toggling --> 
              <div class="collapse navbar-collapse" id="navLinks"> 
                  <ul class="nav navbar-nav navbar-right"> 
+
 					 <li>
 						<a href="myProfile.php?user=<?php echo $_SESSION['user_username']; ?>">My Profile</a>
 					 </li>
+					 <li>
+					 	<a href="myContacts.php">Contacts</a>
+					 </li>
                      <li> 
-                         <a href="">Settings</a> 
+                         <a href="">Messages</a> 
                      </li> 
                      <li> 
-                         <a href="components/logout.php">Log out</a> 
+                         <a href="../components/logout.php">Log out</a> 
                      </li> 
 					 <li>
 						<div class="input-group stylish-input-group" id="searchNavBar" style="width:10em; margin-top: 5%;">

@@ -1,5 +1,5 @@
 <?php include 'controllers/headFrontEnd.php'; ?>
-
+<?php include 'components/loggedin-check.php' ?>
 	<body>
 	
 <?php include 'controllers/navFrontEnd.php'; ?>
