@@ -43,5 +43,10 @@
 		VALUES ($designer_field_id, 'Designer');
 	";
 
+	if ($conn->multi_query($sql) === TRUE) {
+		echo "New records created successfully";
+	} else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
+	}
 
 ?>

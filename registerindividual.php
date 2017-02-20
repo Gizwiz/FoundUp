@@ -97,10 +97,18 @@
 					} else {
 						include 'database/dbconnect.php';
 						
+						$sql = "SELECT user_id FROM user WHERE user_username='$user_username' ";
+						$res = $conn->query($sql);
+						if($res->num_rows==0){
+							
+						} else {
+							$user_username = $user_username.mt_rand(0,9);	
+						}
+						
 						$sql = "SELECT user_email FROM user";
 						$res = $conn->query($sql);
 						
-						if($res->num_rows>=0){
+						if($res->num_rows>0){
 								//if an email match is found, produce errors
 							while($row=$res->fetch_assoc()){
 								if($row['user_email']===$user_email){
@@ -118,6 +126,7 @@
 									user_firstname,
 									user_lastname,
 									user_email,
+									user_contact_email,
 									user_phonenumber,
 									user_password,
 									user_username,
@@ -129,10 +138,11 @@
 									'$user_firstname',
 									'$user_lastname',
 									'$user_email',
+									'$user_email',
 									'$user_phonenumber',
 									'$user_password',
 									'$user_username',
-									'resources/images/userAvatars/person.jpg',
+									'../resources/images/userAvatars/person.jpg',
 									CURRENT_TIMESTAMP
 
 								)
@@ -140,7 +150,7 @@
 							session_start();
 							mysqli_query($conn,$sql) or die(mysqli_error($conn));
 							$_SESSION['user_username'] = $user_username;
-							header('Location: userFrontpage.php?user_username='.$user_username);
+							header('Location: application/userFrontpage.php?user_username='.$user_username);
 							}
 								}
 						

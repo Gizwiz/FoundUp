@@ -10,23 +10,28 @@
                      <span class="icon-bar"></span> 
                      <span class="icon-bar"></span> 
                  </button> 
-                 <a class="navbar-brand" href="userFrontpage.php?<?php echo $_SESSION['user_username']; ?>" id="logo">
+                 <a class="navbar-brand" href="userFrontpage.php?user=<?php echo $_SESSION['user_username']; ?>" id="logo">
 					FoundUp
 				 </a> 
              </div> 
              <!-- Collect the nav links, forms, and other content for toggling --> 
              <div class="collapse navbar-collapse" id="navLinks"> 
                  <ul class="nav navbar-nav navbar-right"> 
-
+					 <li>
+						<a href="userFrontpage.php?user=<?php echo $_SESSION['user_username']; ?>">Front Page</a>
+					 </li>
 					 <li>
 						<a href="myProfile.php?user=<?php echo $_SESSION['user_username']; ?>">My Profile</a>
 					 </li>
 					 <li>
-					 	<a href="myContacts.php">Contacts</a>
+					 	<a href="myContacts.php?user=<?php echo $_SESSION['user_username']; ?>">Contacts</a>
 					 </li>
                      <li> 
-                         <a href="">Messages</a> 
-                     </li> 
+                         <a href="myInbox.php?user=<?php echo $_SESSION['user_username']; ?>">Messages</a> 
+                     </li>
+					 <li>
+					 	<a href="userSettings.php?user=<?php echo $_SESSION['user_username']; ?>">Settings</a>
+					 </li>
                      <li> 
                          <a href="../components/logout.php">Log out</a> 
                      </li> 

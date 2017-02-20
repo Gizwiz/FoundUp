@@ -6,11 +6,12 @@
 
 	$target_dir = '../resources/useravatars/';
 	$target_file = $target_dir.basename($_FILES["fileToUpload"]["name"]);
+	$del_dir = "";
 	$uname = $_SESSION['user_username'];
 	$uploadOk = 1;
 	$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
 
-	if(isset($_POST["submit"])) {
+	if(isset($_POST["submitImg"])) {
 		echo $target_file;
 		$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
 		if($check !== false){
@@ -28,13 +29,29 @@
 
 	//allow certain file formats
 	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+			echo "File format must be .jpg, .jpeg or .png";
 			$uploadOk = 0;
 	}
 
 	if($uploadOk == 0){
-
+	
 	} else {
+		
+					
+			$sql = "SELECT user_avatar FROM user WHERE user_username = '$uname'";
+			$res = $conn->query($sql);
+			if($res->num_rows>0){
+				while($row=$res->fetch_assoc()){
+					$del_dir = $row['user_avatar'];
+				}
+			}
+			
+			//deletes previous avatar file of user to manage disk space
+			unlink($del_dir);
+
+		
 		if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+			
 			$sql = "UPDATE user SET user_avatar = '$target_file' WHERE user_username = '$uname'";
 			if($conn->query($sql) === TRUE){
 				echo "Image uploaded succefully";	

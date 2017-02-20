@@ -18,65 +18,102 @@ h6{
 	
 }
 
+p{
+	font-size: 18px;
+}
 /*myProfile*/
 
 
-
 #myInfo{
-	margin-top: 6%;
+	text-align: center;
+	margin-top: 4%;
 	border-top: solid 1px;
-	text-align: left;
+
 }
 
 #myInfo img{
 	display:block;
-	margin: auto;
+	margin:auto;
 	margin-top: 10%;
 	width: 18em;
 	height: 18em;
 
+}
+
+#name{
+	margin-top:2%;
 }
 
 #myInfo input{
 	background-color: white;
 	border: 1px solid black;
-	margin-top: 55%;
+
 }
 #myInfo input:hover{
 	background-color: #c4e6ff;
 	border: 1px solid black;
-	margin-top: 55%;
+
 }
 
 #profession {
+	width:100%;
 	color: dodgerblue; 
 }
 
+/*abouts*/
+#about{
+	text-align: center;
+}
+
 /*editMyProfile*/
-#myInfEdit{
-	margin-top: 6%;
+
+#editTop{
+	margin-top: 4%;
 	border-top: solid 1px;
 	text-align: center;
 }
 
+#myInfEdit{
+	text-align: center;
+}
+
+#myInfEdit input{
+	width:100%;
+}
+
+.editSelect{
+	width:100%;
+	color:dodgerblue;
+}
+
 #myInfEdit img{
-	display:block;
-	margin: auto;
-	margin-top: 10%;
+	margin-top: -15%;
 	width: 18em;
 	height: 18em;
-
 }
 #myInfEdit form{
 	display: inline-block;
 	margin-left: 10%;
 	text-align: left;
 }
+
 #myInfEdit input{
 	width:90%;
 	margin-bottom: 1%;
 }
+#myInfEdit select{
+	width:90%;
+	margin-bottom: 1%;
+}
 
+#aboutEdit{
+	
+}
+
+#aboutEdit input{
+	width:100%;
+	margin-bottom: 2%;
+}
 
 .navbar-custom {
   position: absolute;
@@ -110,21 +147,7 @@ h6{
 	color:lightgrey;
 	
 }
-@media only screen and (max-width: 768px) {
-#myInfo{
-	margin-top: 12%;
-	border-top: solid 1px;
 
-}
-  
-.btn-default{
-	background-color: black;
-	color:white;
-	font-size: 26px;
-
-}
-
-}
 
 @media only screen and (min-width: 768px) {
   .navbar-custom {
@@ -147,8 +170,10 @@ h6{
   .navbar-custom .nav li a:focus {
     color: rgba(255, 255, 255, 0.8);
   }
+
   
 }
+
 @media only screen and (min-width: 1170px) {
   .navbar-custom {
     -webkit-transition: background-color 0.3s;
