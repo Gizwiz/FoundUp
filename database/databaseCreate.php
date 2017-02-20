@@ -38,56 +38,10 @@ if ($conn->connect_error) {
 } 
 echo "Connected successfully<br>";
 
-echo "Creating User table if not already existing...<br>";
-
-$sql = "CREATE TABLE IF NOT EXISTS User (
-
-	 user_id int UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	 user_email varchar(255),
-	 user_password varchar(255),
-	 user_firstname varchar(64),
-	 user_lastname varchar(64),
-	 user_phonenumber text,
-	 user_username varchar (255),
-	 user_avatar varchar(255),
-	 user_bio text,
-	 user_dob date,
-	 user_profession int UNSIGNED,
-	 user_gender varchar(32),
-	 user_maritalstatus varchar(32),
-	 user_address text,
-	 user_joindate date,
-	 user_country varchar(255)
-
-)";
-
+include 'userdatabase.sql';
 
 if ($conn->query($sql) === TRUE) {
-    echo "Table 'User' created successfully<br>";
-} else {
-    echo "Error creating table: " . $conn->error;
-}
-
-echo "Inputting preset data<br>";
-$sql = "INSERT INTO user (
-user_email, 
-user_firstname, 
-user_lastname,
-user_phonenumber,
-user_username
-)
-
-VALUES 
-(
-'Kana@Kana.fi', 
-'Kana',
-'Kanamaa',
-'01020304',
-'kanakanamaa'
-)";
-
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully<br>";
+    echo "Success";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
