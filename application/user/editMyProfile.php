@@ -1,13 +1,13 @@
-<?php require '../components/authentication.php' ?>
-<?php require '../components/session-check.php' ?>
-<?php include '../database/dbconnect.php' ?>
-<?php include '../components/getUserInfo.php' ?>
+<?php require '../../components/authentication.php' ?>
+<?php require '../../components/session-check.php' ?>
+<?php include '../../database/userdbconnect.php' ?>
+<?php include '../../components/getUserInfo.php' ?>
 
-<?php include '../controllers/headApplication.php' ?>
+<?php include '../../controllers/headApplication.php' ?>
 
 <body>
 
-	<?php include '../controllers/navApplication.php'; ?>
+	<?php include '../../controllers/navApplication.php'; ?>
 	
 	<div class="container-fluid">
 		
@@ -20,10 +20,10 @@
 		<div class="row" id="myInfEdit">
 			<div class="col-md-3">
 		
-				<?php include '../components/getImage.php' ?>
+				<?php include '../../components/getImage.php' ?>
 				<img src="<?=$user_avatar ?>" alt="user_Picture">
 				<h3>Change profile picture</h3>
-				<form action="../components/upload.php" method="post" enctype="multipart/form-data">
+				<form action="../../components/upload.php" method="post" enctype="multipart/form-data">
 					<br>
 					<input type="file" name="fileToUpload" id ="fileToUpload">
 					<input type="submit" value="Upload" name="submitImg">
@@ -43,7 +43,7 @@
 							var field=$("#field").val();
 							$.ajax({
 								type: "post",
-								url: "../components/fieldsDropdown.php",
+								url: "../../components/fieldsDropdown.php",
 								data:"field="+field,
 								success:function(data){
 									$("#professionSelect").html(data);	
@@ -56,7 +56,7 @@
 					<select name="field" id="field">
 						<option>--Select your field--</option>
 						<?php 
-							$sql = "SELECT field_id, field_name FROM field";
+							$sql = "SELECT field_id, field_name FROM field ORDER BY field_name";
 							$res = $conn->query($sql);
 
 							if($res->num_rows>0){
@@ -71,7 +71,7 @@
 				</form>
 				<br>
 
-				<form action="../components/saveProfileEdits.php" method="post" class="editSelect">
+				<form action="../../components/saveProfileEdits.php" method="post" class="editSelect">
 					<select name="user_profession" id="professionSelect" onchange=this.form.submit()>
 						<option>--Select your profession--</option>
 					</select>
@@ -99,23 +99,23 @@
 				
 					<div id="editContactInformation" class="tab-pane fade in active">
 									
-						<form action="../components/saveProfileEdits.php" method="post" style="text-align:left">
+						<form action="../../components/saveProfileEdits.php" method="post" style="text-align:left">
 							<h2 style="text-align: center">Contact Information</h2>
 							<input type="submit" name="submitNewContactInfo" value="Save info" class="form-control" style="width:35%; display:block;margin:auto;"><br>
 							Contact e-mail (does not affect your login e-mail):<input type="email" name="user_email" value="<?php echo $user_email;?>" style="<?php echo $email_css ?>" required><br>
 							Phone:<input type="text" name="user_phonenumber" value="<?php echo $user_phonenumber;?>"><br>
 							Address:<input type="text" name="user_address" value="<?php echo $user_address;?>"><br>
 							City:<input type="text" name="user_city" value="<?php echo $user_city; ?>"><br>
-							Country:<select name="user_country" style="width:100%;"><?php include '../components/countriesDropdown.php' ?></select><br>
+							Country:<select name="user_country" style="width:100%;"><?php include '../../components/countriesDropdown.php' ?></select><br>
 						</form>
 					</div>
 					
 					<div id="editBasicInformation" class="tab-pane fade">
-						<form action="../components/saveProfileedits.php" method="post" style="text-align:left">
+						<form action="../../components/saveProfileEdits.php" method="post" style="text-align:left">
 							<h2 style="text-align: center">Basic Information</h2>
 							<input type="submit" name="submitNewBasicInformation" value="Save info" class="form-control" style="width:35%; display:block;margin:auto;"><br>
 							Date of Birth:<input type="date" name="user_dob" value="<?php echo $user_dob;?>"><br>
-							Gender:<select name="user_gender" id="gen"><?php include '../components/gendersDropdown.php' ?></select> 
+							Gender:<select name="user_gender" id="gen"><?php include '../../components/gendersDropdown.php' ?></select> 
 						
 						</form>
 					</div>

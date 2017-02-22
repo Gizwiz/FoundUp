@@ -1,4 +1,4 @@
-<?php include 'dbConnect.php' ?>
+<?php include 'userdbconnect.php' ?>
 <?php include 'fieldIds.php' ?>
 <?php
 	
@@ -30,6 +30,7 @@
 	"Desktop Support Specialist",
 	"Developer",
 	"Director of Technology",
+	"Full-stack Developer",
 	"Front End Developer",
 	"Help Desk Specialist",
 	"Help Desk Technician",
@@ -126,7 +127,10 @@
 	);
 	
 	//truncate(reset everything) table
-	$sql = "TRUNCATE profession";
+
+	$sql = "
+		TRUNCATE profession
+	";
 	if (mysqli_query($conn, $sql)) {
     echo "Professions Table deleted successfully \n";
 	} else {

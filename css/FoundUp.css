@@ -60,10 +60,19 @@ footer{
 }
 
 
+
 .btn-default{
 	background-color: black;
 	color:white; 
 	font-size: 26px;
+}
+
+
+.registerButton{
+	border: 1px solid black;
+	background-color: white;
+	color:black;
+	width:75%;
 }
 
 #valuePropositions .col-sm-4{
@@ -124,11 +133,8 @@ footer{
 	margin: 5%;
 }
 
-/*user registration*/
 
-#indivRegInfo h1{ 
-	text-align: center;
-}
+/*user registration*/
 
 #registrationUser{
 	text-align: center;
@@ -153,7 +159,32 @@ footer{
 	color:red;
 }
 
+/*Company registration*/
 
+
+#registrationCompany{
+	text-align: center;
+	margin-top: 10%;
+	
+}
+
+
+#registrationCompany span{
+	display:inline-block;
+	font-size: 16px;
+}
+
+
+#registrationCompany input{
+	display:inline-block;
+	padding: 5px;
+	margin-bottom: 1%;
+	width:45%
+}
+
+#companyRegErrMsg{
+	color:red;
+}
 
 /*Login*/
 

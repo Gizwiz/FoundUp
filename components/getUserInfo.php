@@ -1,10 +1,26 @@
-<?php require '../components/authentication.php' ?>
-<?php require '../components/session-check.php' ?>
-<?php include '../database/dbconnect.php' ?>
+<?php
+
+if(!file_exists ('../components/authentication.php')){
+	 require 'authentication.php';
+}else {
+	require '../components/authentication.php';
+}
+if(!file_exists ('../components/session-check.php')){
+	require 'session-check.php';
+} else {
+	require '../components/session-check.php';
+}
+if(!file_exists ('../../database/userdbconnect.php')){
+	require '../database/userdbconnect.php';
+} else {
+	require '../../database/userdbconnect.php';
+}
+   ?>
+
 
 <?php
 	
-	//USER INFORMATION
+	//USER INFORMATION OF CURRENTLY LOGGED IN USER = OWN INFO
 	$user_id = $user_email = $user_firstname = $user_lastname = $user_phonenumber = $user_avatar = $user_bio = $user_dob = $user_profession = $user_gender = $user_maritalstatus = $user_address = $user_city = $user_joindate = $user_country = "";
 
 	$user_username = $_SESSION['user_username'];
@@ -82,7 +98,15 @@
 			
 			$user_country = $row['country_name'];	
 		}
-	} 
+	}
 
+	//get gender name from gender table using gender id from user table
+	$sql = "SELECT gender_name FROM gender WHERE gender_id = '$user_gender' ";
+	$res = $conn->query($sql);
+	if($res->num_rows>0){
+		while($row = $res->fetch_assoc()){
+			$user_gender = $row['gender_name'];	
+		}
+	}
 	$conn->close();
 ?>
