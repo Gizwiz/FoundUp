@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2017 at 08:45 PM
+-- Generation Time: Feb 21, 2017 at 03:12 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -270,6 +270,84 @@ INSERT INTO `field` (`field_id`, `field_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gender`
+--
+
+CREATE TABLE `gender` (
+  `gender_id` int(11) NOT NULL,
+  `gender_name` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gender`
+--
+
+INSERT INTO `gender` (`gender_id`, `gender_name`) VALUES
+(1, 'N/A'),
+(2, 'Male'),
+(3, 'Female'),
+(4, '-'),
+(5, 'Agender'),
+(6, 'Androgyne'),
+(7, 'Androgynous'),
+(8, 'Bigender'),
+(9, 'Cis'),
+(10, 'Cisgender'),
+(11, 'Cis Female'),
+(12, 'Cis Male'),
+(13, 'Cis Man'),
+(14, 'Cis Woman'),
+(15, 'Cisgender Female'),
+(16, 'Cisgender Male'),
+(17, 'Cisgender Man'),
+(18, 'Cisgender Woman'),
+(19, 'Female to Male'),
+(20, 'FTM'),
+(21, 'Gender Fluid'),
+(22, 'Gender Nonconforming'),
+(23, 'Gender Questioning'),
+(24, 'Gender Variant'),
+(25, 'Genderqueer'),
+(26, 'Intersex'),
+(27, 'Male to Female'),
+(28, 'MTF'),
+(29, 'Neither'),
+(30, 'Neutrois'),
+(31, 'Non-binary'),
+(32, 'Other'),
+(33, 'Pangender'),
+(34, 'Trans'),
+(35, 'Trans*'),
+(36, 'Trans Female'),
+(37, 'Trans* Female'),
+(38, 'Trans Male'),
+(39, 'Trans* Male'),
+(40, 'Trans Man'),
+(41, 'Trans* Man'),
+(42, 'Trans Person'),
+(43, 'Trans* Person'),
+(44, 'Trans Woman'),
+(45, 'Trans* Woman'),
+(46, 'Transfeminine'),
+(47, 'Transgender'),
+(48, 'Transgender Female'),
+(49, 'Transgender Male'),
+(50, 'Transgender Man'),
+(51, 'Transgender Person'),
+(52, 'Transgender Woman'),
+(53, 'Transmasculine'),
+(54, 'Transsexual'),
+(55, 'Transsexual Female'),
+(56, 'Transsexual Male'),
+(57, 'Transsexual Man'),
+(58, 'Transsexual Person'),
+(59, 'Transsexual Woman'),
+(60, 'Two-Spirit'),
+(61, 'Apache AH-64 Attack Helicopter');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `profession`
 --
 
@@ -302,92 +380,92 @@ INSERT INTO `profession` (`profession_id`, `profession_field_id`, `profession_na
 (16, 2, 'Desktop Support Specialist'),
 (17, 2, 'Developer'),
 (18, 2, 'Director of Technology'),
-(19, 2, 'Front End Developer'),
-(20, 2, 'Help Desk Specialist'),
-(21, 2, 'Help Desk Technician'),
-(22, 2, 'Information Technology Coordinator'),
-(23, 2, 'Information Technology Director'),
-(24, 2, 'Information Technology Manager'),
-(25, 2, 'IT Support Manager'),
-(26, 2, 'IT Support Specialist'),
-(27, 2, 'IT Systems Administrator'),
-(28, 2, 'Java Developer'),
-(29, 2, 'Junior Software Engineer'),
-(30, 2, 'Management Information Systems Director'),
-(31, 2, '.NET Developer'),
-(32, 2, 'Network Architect'),
-(33, 2, 'Network Engineer'),
-(34, 2, 'Network Systems Administrator'),
-(35, 2, 'Programmer'),
-(36, 2, 'Programmer Analyst'),
-(37, 2, 'Security Specialist'),
-(38, 2, 'Senior Applications Engineer'),
-(39, 2, 'Senior Database Administrator'),
-(40, 2, 'Senior Network Architect'),
-(41, 2, 'Senior Network Engineer'),
-(42, 2, 'Senior Network System Administrator'),
-(43, 2, 'Senior Programmer'),
-(44, 2, 'Senior Programmer Analyst'),
-(45, 2, 'Senior Security Specialist'),
-(46, 2, 'Senior Software Engineer'),
-(47, 2, 'Senior Support Specialist'),
-(48, 2, 'Senior System Administrator'),
-(49, 2, 'Senior System Analyst'),
-(50, 2, 'Senior System Architect'),
-(51, 2, 'Senior System Designer'),
-(52, 2, 'Senior Systems Analyst'),
-(53, 2, 'Senior Systems Software Engineer'),
-(54, 2, 'Senior Web Administrator'),
-(55, 2, 'Senior Web Developer'),
-(56, 2, 'Software Architect'),
-(57, 2, 'Software Developer'),
-(58, 2, 'Software Engineer'),
-(59, 2, 'Software Quality Assurance Analyst'),
-(60, 2, 'Support Specialist'),
-(61, 2, 'Systems Administrator'),
-(62, 2, 'Systems Analyst'),
-(63, 2, 'System Architect'),
-(64, 2, 'Systems Designer'),
-(65, 2, 'Systems Software Engineer'),
-(66, 2, 'Technical Operations Officer'),
-(67, 2, 'Technical Support Engineer'),
-(68, 2, 'Technical Support Specialist'),
-(69, 2, 'Technical Specialist'),
-(70, 2, 'Telecommunications Specialist'),
-(71, 2, 'Web Administrator'),
-(72, 2, 'Web Developer'),
-(73, 2, 'Webmaster'),
-(74, 3, ' '),
-(75, 3, 'Acoustic Engineer'),
-(76, 3, 'Aerospace Engineer'),
-(77, 3, 'Agricultural Engineer'),
-(78, 3, 'Applied Engineer'),
-(79, 3, 'Architectural Engineer'),
-(80, 3, 'Audio Engineer'),
-(81, 3, 'Automotive Engineer'),
-(82, 3, 'Biomedical Engineer'),
-(83, 3, 'Chemical Engineer'),
-(84, 3, 'Civil Engineer'),
-(85, 3, 'Computer Engineer'),
-(86, 3, 'Electrical Engineer'),
-(87, 3, 'Environmental Engineer'),
-(88, 3, 'Industrial Engineer'),
-(89, 3, 'Marine Engineer'),
-(90, 3, 'Materials Science Engineer'),
-(91, 3, 'Mechanical Engineer'),
-(92, 3, 'Mechatronic Engineer'),
-(93, 3, 'Mining and Geological Engineer'),
-(94, 3, 'Molecular Engineer'),
-(95, 3, 'Nanoengineer'),
-(96, 3, 'Nuclear Engineer'),
-(97, 3, 'Petroleum Engineer'),
-(98, 3, 'Software Engineer'),
-(99, 3, 'Structural Engineer'),
-(100, 3, 'Telecommunications Engineer'),
-(101, 3, 'Thermal Engineer'),
-(102, 3, 'Transport Engineer'),
-(103, 3, 'Vehicle Engineer'),
-(104, 2, 'Full-stack Developer');
+(19, 2, 'Full-stack Developer'),
+(20, 2, 'Front End Developer'),
+(21, 2, 'Help Desk Specialist'),
+(22, 2, 'Help Desk Technician'),
+(23, 2, 'Information Technology Coordinator'),
+(24, 2, 'Information Technology Director'),
+(25, 2, 'Information Technology Manager'),
+(26, 2, 'IT Support Manager'),
+(27, 2, 'IT Support Specialist'),
+(28, 2, 'IT Systems Administrator'),
+(29, 2, 'Java Developer'),
+(30, 2, 'Junior Software Engineer'),
+(31, 2, 'Management Information Systems Director'),
+(32, 2, '.NET Developer'),
+(33, 2, 'Network Architect'),
+(34, 2, 'Network Engineer'),
+(35, 2, 'Network Systems Administrator'),
+(36, 2, 'Programmer'),
+(37, 2, 'Programmer Analyst'),
+(38, 2, 'Security Specialist'),
+(39, 2, 'Senior Applications Engineer'),
+(40, 2, 'Senior Database Administrator'),
+(41, 2, 'Senior Network Architect'),
+(42, 2, 'Senior Network Engineer'),
+(43, 2, 'Senior Network System Administrator'),
+(44, 2, 'Senior Programmer'),
+(45, 2, 'Senior Programmer Analyst'),
+(46, 2, 'Senior Security Specialist'),
+(47, 2, 'Senior Software Engineer'),
+(48, 2, 'Senior Support Specialist'),
+(49, 2, 'Senior System Administrator'),
+(50, 2, 'Senior System Analyst'),
+(51, 2, 'Senior System Architect'),
+(52, 2, 'Senior System Designer'),
+(53, 2, 'Senior Systems Analyst'),
+(54, 2, 'Senior Systems Software Engineer'),
+(55, 2, 'Senior Web Administrator'),
+(56, 2, 'Senior Web Developer'),
+(57, 2, 'Software Architect'),
+(58, 2, 'Software Developer'),
+(59, 2, 'Software Engineer'),
+(60, 2, 'Software Quality Assurance Analyst'),
+(61, 2, 'Support Specialist'),
+(62, 2, 'Systems Administrator'),
+(63, 2, 'Systems Analyst'),
+(64, 2, 'System Architect'),
+(65, 2, 'Systems Designer'),
+(66, 2, 'Systems Software Engineer'),
+(67, 2, 'Technical Operations Officer'),
+(68, 2, 'Technical Support Engineer'),
+(69, 2, 'Technical Support Specialist'),
+(70, 2, 'Technical Specialist'),
+(71, 2, 'Telecommunications Specialist'),
+(72, 2, 'Web Administrator'),
+(73, 2, 'Web Developer'),
+(74, 2, 'Webmaster'),
+(75, 3, ' '),
+(76, 3, 'Acoustic Engineer'),
+(77, 3, 'Aerospace Engineer'),
+(78, 3, 'Agricultural Engineer'),
+(79, 3, 'Applied Engineer'),
+(80, 3, 'Architectural Engineer'),
+(81, 3, 'Audio Engineer'),
+(82, 3, 'Automotive Engineer'),
+(83, 3, 'Biomedical Engineer'),
+(84, 3, 'Chemical Engineer'),
+(85, 3, 'Civil Engineer'),
+(86, 3, 'Computer Engineer'),
+(87, 3, 'Electrical Engineer'),
+(88, 3, 'Environmental Engineer'),
+(89, 3, 'Industrial Engineer'),
+(90, 3, 'Marine Engineer'),
+(91, 3, 'Materials Science Engineer'),
+(92, 3, 'Mechanical Engineer'),
+(93, 3, 'Mechatronic Engineer'),
+(94, 3, 'Mining and Geological Engineer'),
+(95, 3, 'Molecular Engineer'),
+(96, 3, 'Nanoengineer'),
+(97, 3, 'Nuclear Engineer'),
+(98, 3, 'Petroleum Engineer'),
+(99, 3, 'Software Engineer'),
+(100, 3, 'Structural Engineer'),
+(101, 3, 'Telecommunications Engineer'),
+(102, 3, 'Thermal Engineer'),
+(103, 3, 'Transport Engineer'),
+(104, 3, 'Vehicle Engineer');
 
 -- --------------------------------------------------------
 
@@ -408,7 +486,7 @@ CREATE TABLE `user` (
   `user_bio` text,
   `user_dob` date DEFAULT NULL,
   `user_profession` int(10) UNSIGNED DEFAULT NULL,
-  `user_gender` varchar(32) DEFAULT NULL,
+  `user_gender` int(11) DEFAULT NULL,
   `user_maritalstatus` varchar(32) DEFAULT NULL,
   `user_address` text,
   `user_city` varchar(255) NOT NULL,
@@ -421,7 +499,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_email`, `user_contact_email`, `user_password`, `user_firstname`, `user_lastname`, `user_phonenumber`, `user_username`, `user_avatar`, `user_bio`, `user_dob`, `user_profession`, `user_gender`, `user_maritalstatus`, `user_address`, `user_city`, `user_joindate`, `user_country`) VALUES
-(47, 'markus.sahrakorpi@gmail.com', 'markus.sahrakorpi@gmail.com', '123123', 'Markus', 'Sahrakorpi', '+123456789', 'MarkusSahrakorpi', '../resources/useravatars/av3.jpg', NULL, NULL, 104, 'Male', NULL, 'Gonapolku 57', 'PaskalÃ¤Ã¤vi', '2017-02-12', 64),
+(47, 'markus.sahrakorpi@gmail.com', 'markus.sahrakorpi@gmail.com', '123123', 'Markus', 'Sahrakorpi', '+123456789', 'MarkusSahrakorpi', '../resources/useravatars/av3.jpg', NULL, '1212-12-12', 19, 2, NULL, 'Gonapolku 57', 'PaskalÃ¤Ã¤vi', '2017-02-12', 64),
 (48, 'kana@kalkkuna.fi', '', '456', 'Kana', 'Kalkkuna', '123123123', 'KanaKalkkuna', '../resources/userAvatars/person.jpg', NULL, NULL, 96, NULL, NULL, NULL, '', '2017-02-12', NULL),
 (49, 'asd@ggg.com', 'asd@ggg.com', '1234', 'Markus', 'Sahrakorpi', '123123', 'MarkusSahrakorpi6', '../resources/images/userAvatars/person.jpg', NULL, NULL, NULL, NULL, NULL, NULL, '', '2017-02-20', NULL);
 
@@ -467,6 +545,13 @@ ALTER TABLE `field`
   ADD KEY `field_id` (`field_id`);
 
 --
+-- Indexes for table `gender`
+--
+ALTER TABLE `gender`
+  ADD PRIMARY KEY (`gender_id`),
+  ADD KEY `gender_id` (`gender_id`);
+
+--
 -- Indexes for table `profession`
 --
 ALTER TABLE `profession`
@@ -481,7 +566,8 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`),
   ADD KEY `user_profession` (`user_profession`),
   ADD KEY `user_id` (`user_id`),
-  ADD KEY `user_country` (`user_country`);
+  ADD KEY `user_country` (`user_country`),
+  ADD KEY `user_gender` (`user_gender`);
 
 --
 -- Indexes for table `works`
@@ -504,6 +590,11 @@ ALTER TABLE `country`
 --
 ALTER TABLE `field`
   MODIFY `field_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `gender`
+--
+ALTER TABLE `gender`
+  MODIFY `gender_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT for table `profession`
 --
@@ -533,7 +624,9 @@ ALTER TABLE `profession`
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`user_profession`) REFERENCES `profession` (`profession_id`);
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`user_profession`) REFERENCES `profession` (`profession_id`),
+  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`user_country`) REFERENCES `country` (`country_id`),
+  ADD CONSTRAINT `user_ibfk_3` FOREIGN KEY (`user_gender`) REFERENCES `gender` (`gender_id`);
 
 --
 -- Constraints for table `works`

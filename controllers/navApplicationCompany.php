@@ -10,7 +10,7 @@
                      <span class="icon-bar"></span> 
                      <span class="icon-bar"></span> 
                  </button> 
-                 <a class="navbar-brand" href="userFrontpage.php?user=<?php echo $_SESSION['user_username']; ?>" id="logo">
+                 <a class="navbar-brand logo" href="companyFrontpage.php?user=<?php echo $_SESSION['company_username']; ?>">
 					FoundUp
 				 </a> 
              </div> 
@@ -18,19 +18,19 @@
              <div class="collapse navbar-collapse" id="navLinks"> 
                  <ul class="nav navbar-nav navbar-right"> 
 					 <li>
-						<a href="userFrontpage.php?user=<?php echo $_SESSION['user_username']; ?>">Front Page</a>
+						<a href="companyFrontpage.php?user=<?php echo $_SESSION['company_username']; ?>">Front Page</a>
 					 </li>
 					 <li>
-						<a href="myProfile.php?user=<?php echo $_SESSION['user_username']; ?>">My Profile</a>
+						<a href="companyProfile.php?user=<?php echo $_SESSION['company_username']; ?>">Company Profile</a>
 					 </li>
 					 <li>
-					 	<a href="myContacts.php?user=<?php echo $_SESSION['user_username']; ?>">Contacts</a>
+					 	<a href="companyContacts.php?user=<?php echo $_SESSION['company_username']; ?>">Contacts</a>
 					 </li>
                      <li> 
-                         <a href="myInbox.php?user=<?php echo $_SESSION['user_username']; ?>">Messages</a> 
+                         <a href="companyInbox.php?user=<?php echo $_SESSION['company_username']; ?>">Messages</a> 
                      </li>
 					 <li>
-					 	<a href="userSettings.php?user=<?php echo $_SESSION['user_username']; ?>">Settings</a>
+					 	<a href="companySettings.php?user=<?php echo $_SESSION['company_username']; ?>">Settings</a>
 					 </li>
                      <li> 
                          <a href="../../components/logout.php">Log out</a> 

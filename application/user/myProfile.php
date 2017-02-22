@@ -1,13 +1,13 @@
-<?php require '../components/authentication.php' ?>
-<?php require '../components/session-check.php' ?>
-<?php include '../components/getUserInfo.php' ?>
+<?php require '../../components/authentication.php' ?>
+<?php require '../../components/session-check.php' ?>
+<?php include '../../components/getUserInfo.php' ?>
 
-<?php include '../controllers/headApplication.php' ?>
+<?php include '../../controllers/headApplication.php' ?>
 
 
 <body>
 	
-	<?php include '../controllers/navApplication.php'; ?>
+	<?php include '../../controllers/navApplication.php'; ?>
 
 	<div class="container-fluid">
 
@@ -17,8 +17,8 @@
 				
 
 								<!-- Get and display user avatar image -->
-				<?php include '../components/getImage.php' ?>
-				<img src="<?=$user_avatar ?>" alt="user_Picture">
+				<?php include '../../components/getImage.php' ?>
+				<img src="<?php echo $user_avatar; ?>" alt="<?php echo $user_avatar; ?>">
 				<br>
 				
 			</div>
@@ -32,11 +32,11 @@
 				<br><br>
 				
 				
-				<?php include '../components/userActions.php' ?>
+				<?php include '../../components/userActions.php' ?>
 
 			</div>
 			<div class="col-md-4" id="editProfileButton">
-				<form method="post" action="../components/editProfileRedirection.php">
+				<form method="post" action="../../components/editUserProfileRedirection.php">
 					<input type="submit" name="edit" value="Edit Profile">
 				</form>
 			</div>
@@ -69,7 +69,7 @@
 					</div>
 					<div id="workInformation" class="tab-pane fade pre-scrollable">
 						<h2>Work and Projects</h2><br>
-						<?php include '../components/getUserWorks.php' ?>
+						<?php include '../../components/getUserWorks.php' ?>
 						<br><br>
 					</div>
 				</div>

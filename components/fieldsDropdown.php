@@ -1,6 +1,6 @@
 <?php require '../components/authentication.php' ?>
 <?php require '../components/session-check.php' ?>
-<?php include '../database/dbconnect.php' ?>
+<?php include '../database/userdbconnect.php' ?>
 
 <?php
 	$field=$_POST['field'];
@@ -11,6 +11,6 @@
 			echo "<option value='".$row['profession_id']."'>".$row['profession_name']."</option>";	
 		}
 	} else { 
-		echo "<option value=0>--Select your profession--</option>";
+		echo "<option value='invalid'>--Select your profession--</option>";
 	}
 ?>

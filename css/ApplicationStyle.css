@@ -21,9 +21,67 @@ h6{
 p{
 	font-size: 18px;
 }
+
+/*Front page*/
+#frontPageTop{
+	text-align: center;
+	margin-top: 4%;
+	border-top: solid 1px;
+}
+
+#suggestionsCarousel h4{
+	font-size: 24px;
+}
+
+#suggestionsCarousel{
+	
+	text-align: center;
+	margin-top: 1%;
+}
+
+#suggestionsCarousel img{
+	width:100% !important;
+	height: 20%;
+}
+
+ul.thumbnails { 
+    margin-bottom: 0px;
+}
+
+
+
+.thumbnails li> .fff .caption{
+	padding:10px;
+}
+
+li{
+	list-style-type:none;
+}
+/* Carousel Control */
+.control-box {
+    text-align: center;
+    width: 100%;
+}
+.carousel-control{
+    background: #666;
+    border: 0px;
+    border-radius: 0px;
+    display: inline-block;
+    font-size: 34px;
+    font-weight: 200;
+    line-height: 18px;
+    opacity: 0.5;
+    padding: 4px 10px 0px;
+    position: static;
+    height: 30px;
+    width: 15px;
+}
+
 /*myProfile*/
 
-
+#uImg{
+	position: relative;
+}
 #myInfo{
 	text-align: center;
 	margin-top: 4%;
@@ -32,15 +90,22 @@ p{
 }
 
 #myInfo img{
+	text-align: center;
 	display:block;
-	margin:auto;
 	margin-top: 10%;
+	margin-right:auto;
+	margin-left: auto;
 	width: 18em;
 	height: 18em;
 
 }
 
+#editProfileButton{
+	margin-top: 7%;
+}
+
 #name{
+	text-align: center;
 	margin-top:2%;
 }
 
@@ -148,6 +213,12 @@ p{
 	
 }
 
+
+@media only screen and (max-width: 991px) {
+	#editProfileButton{
+		margin-top: -3%;	
+	}
+}
 
 @media only screen and (min-width: 768px) {
   .navbar-custom {
@@ -307,7 +378,7 @@ p{
 /*search*/
 
 .stylish-input-group .input-group-addon{
-    background: #white !important; 
+    background: white !important; 
 	color:black !important;
 }
 

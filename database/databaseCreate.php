@@ -1,9 +1,9 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "t2k1400r";
 $dbname = "userdatabase";
-
+$dbname2 = "companydatabase";
 
 
 
@@ -47,5 +47,25 @@ if ($conn->query($sql) === TRUE) {
 }
 
 $conn->close();
+
+echo "Connecting to companydatabase...<br>";
+$conn = new mysqli($servername, $username, $password, $dbname2);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+echo "Connected successfully<br>";
+
+include 'userdatabase.sql';
+
+if ($conn->query($sql) === TRUE) {
+    echo "Success";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+
 echo "Connection closed, ready to go!";
 ?> 

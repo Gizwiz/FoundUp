@@ -1,10 +1,10 @@
-<?php require '../components/authentication.php' ?>
-<?php require '../components/session-check.php' ?>
-<?php require '../database/dbConnect.php' ?>
+<?php require '../../components/authentication.php' ?>
+<?php require '../../components/session-check.php' ?>
+<?php require '../../database/userdbconnect.php' ?>
 
 <?php
 
-	$target_dir = '../resources/useravatars/';
+	$target_dir = '../../resources/useravatars/';
 	$target_file = $target_dir.basename($_FILES["fileToUpload"]["name"]);
 	$del_dir = "";
 	$uname = $_SESSION['user_username'];

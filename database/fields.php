@@ -1,4 +1,4 @@
-<?php include 'dbConnect.php' ?>
+<?php include 'userdbconnect.php' ?>
 <?php include 'fieldIds.php' ?>
 
 <?php
