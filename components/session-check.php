@@ -15,7 +15,7 @@
 	}
 
 	if(!isset($_SESSION['user_username']) and !isset($_SESSION['company_username'])){
-		//header("location:../../login.php?session=notset");	
+		header("location:../../login.php?session=notset");	
 	}
 
 ?>

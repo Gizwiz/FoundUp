@@ -13,6 +13,12 @@
                  <a class="navbar-brand" href="userFrontpage.php?user=<?php echo $_SESSION['user_username']; ?>" id="logo">
 					FoundUp
 				 </a> 
+				<?php include '../../components/getImage.php' ?>
+				<img src="<?php echo $user_avatar ?>" alt="userImage"></img>
+
+				<?php 
+					echo '<p>'.$user_firstname.' '.$user_lastname.'</p>';
+				?>
              </div> 
              <!-- Collect the nav links, forms, and other content for toggling --> 
              <div class="collapse navbar-collapse" id="navLinks"> 

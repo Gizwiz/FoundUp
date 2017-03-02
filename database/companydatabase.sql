@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2017 at 08:25 PM
+-- Generation Time: Mar 02, 2017 at 10:03 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -58,7 +58,9 @@ INSERT INTO `company` (`company_id`, `company_name`, `company_password`, `compan
 (10, 'Example StartUp7', '123', 'Example@testing.com', 'ExampleStartUp7', '2017-02-21', '', '', '', '', '', '../../resources/companyAvatars/startup.jpg'),
 (11, 'Example StartUp8', '123', 'Example@testing.com', 'ExampleStartUp8', '2017-02-21', '', '', '', '', '', '../../resources/companyAvatars/startup.jpg'),
 (12, 'Example StartUp9', '123', 'Example@testing.com', 'ExampleStartUp9', '2017-02-21', '', '', '', '', '', '../../resources/companyAvatars/startup.jpg'),
-(13, 'Wafaa', 'moroporo', 'wafa@wafter.waf', 'Wafaa', '2017-02-22', '', '', '', '', '', '../../resources/companyAvatars/startup.jpg');
+(13, 'Wafaa', 'moroporo', 'wafa@wafter.waf', 'Wafaa', '2017-02-22', '', '', '', '', '', '../../resources/companyAvatars/startup.jpg'),
+(14, 'CompHash', '$2y$10$dq4pM7JH3WqbSssAp/0RqO4FSMRkv2ZPS5DF8NEvu/2oAEe30uU6.', 'com@hashtest.com', 'CompHash', '2017-03-02', '', '', '', '', '', '../../resources/companyAvatars/startup.jpg'),
+(15, 'CompHash2', '$2y$10$lnv16YgHA3eOK0crLpu0oePEcbh4cv1X6yWBXfjjAX8Mu7vxVsSpa', 'comp2@hashtest.com', 'CompHash2', '2017-03-02', '', '', '', '', '', '../../resources/companyAvatars/startup.jpg');
 
 -- --------------------------------------------------------
 
@@ -240,7 +242,7 @@ ALTER TABLE `profession`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `field`
 --

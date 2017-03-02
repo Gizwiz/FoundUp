@@ -1,7 +1,6 @@
 <?php require '../../components/authentication.php' ?>
 <?php require '../../components/session-check.php' ?>
 <?php include '../../database/userdbconnect.php' ?>
-<?php include '../../components/getUserInfo.php' ?>
 
 <?php include '../../controllers/headApplication.php' ?>
 
@@ -90,51 +89,166 @@
 			</div>
 			<div class="col-md-8">
 				
-				<ul class="nav nav-pills">
-					<li class="active"><a data-toggle="pill" href="#editContactInformation">Contact Information</a></li>
+				<ul class="nav nav-pills nav-justified">
+					<li><a data-toggle="pill" href="#editContactInformation">Contact Information</a></li>
 					<li><a data-toggle="pill" href="#editBasicInformation">Basic Information</a></li>
-					<li><a data-toggle="pill" href="#editWorkInformation">Work and Projects</a></li>
+					<li class="active"><a data-toggle="pill" href="#editWorkInformation">Work and Projects</a></li>
 				</ul>
 				<div class="tab-content">
 				
-					<div id="editContactInformation" class="tab-pane fade in active">
+					<div id="editContactInformation" class="tab-pane fade in" style="height: 50vh">
 									
 						<form action="../../components/saveProfileEdits.php" method="post" style="text-align:left">
 							<h2 style="text-align: center">Contact Information</h2>
 							<input type="submit" name="submitNewContactInfo" value="Save info" class="form-control" style="width:35%; display:block;margin:auto;"><br>
 							Contact e-mail (does not affect your login e-mail):<input type="email" name="user_email" value="<?php echo $user_email;?>" style="<?php echo $email_css ?>" required><br>
-							Phone:<input type="text" name="user_phonenumber" value="<?php echo $user_phonenumber;?>"><br>
+							Phone number:<input type="text" name="user_phonenumber" value="<?php echo $user_phonenumber;?>"><br>
 							Address:<input type="text" name="user_address" value="<?php echo $user_address;?>"><br>
 							City:<input type="text" name="user_city" value="<?php echo $user_city; ?>"><br>
 							Country:<select name="user_country" style="width:100%;"><?php include '../../components/countriesDropdown.php' ?></select><br>
 						</form>
 					</div>
 					
-					<div id="editBasicInformation" class="tab-pane fade">
+					<div id="editBasicInformation" class="tab-pane fade" style="height: 50vh">
 						<form action="../../components/saveProfileEdits.php" method="post" style="text-align:left">
 							<h2 style="text-align: center">Basic Information</h2>
 							<input type="submit" name="submitNewBasicInformation" value="Save info" class="form-control" style="width:35%; display:block;margin:auto;"><br>
-							Date of Birth:<input type="date" name="user_dob" value="<?php echo $user_dob;?>"><br>
+							Date of Birth (DD-MM-YYYY):<input type="date" name="user_dob" value="<?php echo $user_dob;?>"><br>
 							Gender:<select name="user_gender" id="gen"><?php include '../../components/gendersDropdown.php' ?></select> 
 						
 						</form>
 					</div>
 					
-					<div id="editWorkInformation"  class="tab-pane fade">
-						<h2>BBBBBB</h2>
+					<div id="editWorkInformation" class="tab-pane fade in active" style="height: 50vh">
+
+						<h2 style="display:inline-block;">Add an entry: &nbsp;</h2>
+						
+						<!-- Trigger Modal Button -->
+						<button type="button" class="btn btn-default btn-circle btn-lg" data-toggle="modal" data-target="#addWorkModal">+</button>
+						
+						<!-- Modal -->
+						<div id="addWorkModal" class="modal fade" role="dialog">
+							<div class="modal-dialog">
+								<!-- Modal Content -->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h2 class="modal-title">Add Work Information</h2>
+									</div>
+									<div class="modal-body">
+										<form action="../../components/addUserWorks.php" class="form-group" method="post">
+											Title: <input type="text" name="work_title" placeholder="Title of work / Name of project"><br>
+											Description (max. 512 characters): <textarea name="work_description" style="width:100%; height: 20%; resize:none;" maxlength="512" placeholder="Description"></textarea><br>
+											URL: <input type="text" name="work_url" placeholder="http://www.url.com" ><br>
+											Start date (YYYY-MM-DD):
+											<input type="text" class="form-control" name="work_start_time" id="datepicker1" placeholder="YYYY-MM-DD">
+											<script type="text/javascript">
+												$("#datepicker1").datepicker({
+													format: "yyyy-mm-dd",
+													orientation: "bottom left",
+													autoclose: true
+												});
+
+											</script>
+											End date (YYYY-MM-DD):
+											<input type="text" class="form-control" name="work_end_time" id="datepicker2" placeholder="YYYY-MM-DD">
+											
+											<script type="text/javascript">
+												$("#datepicker2").datepicker({
+													format: "yyyy-mm-dd",
+													orientation: "bottom left",
+													autoclose: true
+												});
+
+											</script>
+											<input class="btn btn-primary btn-lg" type="submit" name="submitWorkInfo" value="Save" style="width:25%">
+
+										</form>
+										
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div><!-- END ADD WORK MODAL -->
+						
+						
+						
+						<br><br>
+						
+						<div style="border-top: 1px solid black" class="pre-scrollable">
+							<?php include '../../components/GetWorksWithEditOption.php' ?>
+						</div>
+						
+						
+						<!--Edit Work Modal -->
+						<div id="editWorkModal" class="modal fade" role="dialog">
+							<div class="modal-dialog">
+								<!-- Modal Content -->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h2 class="modal-title">Add Work Information</h2>
+									</div>
+									<div class="modal-body">
+										<form action="../../components/editUserWorks.php" class="form-group" method="post">
+											Title: <input type="text" name="work_title" value="<?php echo $work_title ?>" placeholder="Title of work / Name of project"><br>
+											Description (max. 512 characters): <textarea name="work_description" style="width:100%; height: 20%; resize:none;" maxlength="512" placeholder="Description"><?php echo $work_description ?></textarea><br>
+											URL: <input type="text" name="work_url" value="<?php echo $work_url ?>";placeholder="http://www.url.com" ><br>
+											Start date (YYYY-MM-DD):
+											<input type="text" class="form-control" name="work_start_time" id="datepicker1" value="<?php echo $work_time_start ?>" placeholder="YYYY-MM-DD">
+											<script type="text/javascript">
+												$("#datepicker1").datepicker({
+													format: "yyyy-mm-dd",
+													orientation: "bottom left",
+													autoclose: true
+												});
+
+											</script>
+											End date (YYYY-MM-DD):
+											<input type="text" class="form-control" name="work_end_time" id="datepicker2" value="<?php echo $work_time_end ?>"placeholder="YYYY-MM-DD">
+											
+											<script type="text/javascript">
+												$("#datepicker2").datepicker({
+													format: "yyyy-mm-dd",
+													orientation: "bottom left",
+													autoclose: true
+												});
+
+											</script>
+											<input class="btn btn-primary btn-lg" type="submit" name="submitWorkInfo" value="Save" style="width:25%">
+
+										</form>
+										
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div><!-- END ADD WORK MODAL -->
+						
+						<script>
+							function clicked(){
+								console.log("CLICKED");	
+							}
+						
+						</script>
 						
 						<!-- PLUS BUTTON TO OPEN MODAL TO ENTER WORK INFO -> SUBMIT -->
-						<br><br><br><br><br><br><br><br><br><br><br>
-						<br><br><br><br><br><br><br><br><br><br><br>
-						<br><br><br><br><br><br><br><br><br><br><br>
+						<? include getUserWorks.php ?>
 					</div>
 				</div>
+			</div>
 
 				
 			</div>
 
 			<div class="col-md-2">
-			
+
 			</div>
 		</div>
 		

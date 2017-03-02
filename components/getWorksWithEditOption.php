@@ -1,6 +1,5 @@
 <?php require '../../components/authentication.php' ?>
 <?php require '../../components/session-check.php' ?>
-<?php include '../../database/userdbconnect.php' ?>
 <?php include '../../components/getUserInfo.php' ?>
 
 <?php
@@ -10,6 +9,7 @@
 include '../../database/userdbconnect.php';
 $sql = "
 		SELECT 
+			id,
 			work_title,
 			work_description,
 			work_url,
@@ -25,6 +25,7 @@ $sql = "
 	if($res->num_rows>0){
 			
 		while($row=$res->fetch_assoc()){
+			$id = $row['id'];
 			$work_title = $row['work_title'];	
 			$work_description = $row['work_description'];
 			$work_url = $row['work_url'];
@@ -43,7 +44,13 @@ $sql = "
 				$work_time_combine= '<h4>Complete: '.$work_time_end.'</h4>';
 			}	
 			
-			echo '<div style="border-bottom: 1px solid black"><h3>'.$work_title.' <i>'.$work_time_combine.'</i></h3><p>'.$work_description.'</p><a href="'.$work_url.'">'.$work_url.'</a><br><br></div>';
+			echo '<div style="border-bottom: 1px solid black">
+			<br>
+			<button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#editWorkModal">EDIT</button>
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-default btn-lg">DELETE</button>
+			<h3>'.$work_title.'<i>'.$work_time_combine.'</i></h3><p>'.$work_description.'</p><a href="'.$work_url.'">'.$work_url.'</a><br><br></div>';
+			
 		}
 	} else {
 		echo "<h3>No projects.</h3>";	

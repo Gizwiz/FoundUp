@@ -27,10 +27,9 @@
 
 ?>
 
-<div class="container">
+<div class="container-fluid">
 		<div class="row">
-			<h2 style="text-align:center">You may be interested in:</h2>
-			<br>
+			<h2 style="text-align:center">You may be interested in:</h2><br>
 			<div class="col-xs-12">
 			<div class="carousel slide" data-ride="carousel" id="suggestionsCarousel" data-interval="8000">
 				<div class="carousel-inner">
@@ -152,7 +151,7 @@
 									<div class="caption">
 										<h4><?php echo $suggestedCompany[8] ?></h4>
 										<p>INFO HERE</p>
-										<a class="btn btn-mini" href="#">>> View</a>
+										<a class="btn btn-default" href="#">>> View</a>
 									</div>
 								</div>
 							</li>
@@ -164,7 +163,7 @@
 									<div class="caption">
 										<h4><?php echo $suggestedCompany[9] ?></h4>
 										<p>INFO HERE</p>
-										<a class="btn btn-mini" href="#">>> View</a>
+										<a class="btnbtn-default" href="#">>> View</a>
 									</div>
 								</div>
 							</li>
@@ -176,7 +175,7 @@
 									<div class="caption">
 										<h4><?php echo $suggestedCompany[10] ?></h4>
 										<p>INFO HERE</p>
-										<a class="btn btn-mini" href="#">>> View</a>
+										<a class="btn btn-default" href="#">>> View</a>
 									</div>
 								</div>
 							</li>
@@ -188,7 +187,7 @@
 									<div class="caption">
 										<h4><?php echo $suggestedCompany[11] ?></h4>
 										<p>INFO HERE</p>
-										<a class="btn btn-mini" href="#">>> View</a>
+										<a class="btn btn-default" href="#">>> View</a>
 									</div>
 								</div>
 							</li>
@@ -198,7 +197,7 @@
 	   <nav>
 			<ul class="control-box pager">
 				<li><a data-slide="prev" href="#suggestionsCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
-				<li><a data-slide="next" href="#suggestionsCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></li>
+				<li><a data-slide="next" href="#suggestionsCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></a></li>
 			</ul>
 		</nav>	
 			</div> 

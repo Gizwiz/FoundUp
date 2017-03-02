@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2017 at 03:12 PM
+-- Generation Time: Mar 02, 2017 at 10:03 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -343,7 +343,8 @@ INSERT INTO `gender` (`gender_id`, `gender_name`) VALUES
 (58, 'Transsexual Person'),
 (59, 'Transsexual Woman'),
 (60, 'Two-Spirit'),
-(61, 'Apache AH-64 Attack Helicopter');
+(61, 'Apache AH-64 Attack Helicopter'),
+(62, 'Stupid Dragon Girl');
 
 -- --------------------------------------------------------
 
@@ -465,7 +466,8 @@ INSERT INTO `profession` (`profession_id`, `profession_field_id`, `profession_na
 (101, 3, 'Telecommunications Engineer'),
 (102, 3, 'Thermal Engineer'),
 (103, 3, 'Transport Engineer'),
-(104, 3, 'Vehicle Engineer');
+(104, 3, 'Vehicle Engineer'),
+(105, 2, 'Back End Developer');
 
 -- --------------------------------------------------------
 
@@ -488,20 +490,18 @@ CREATE TABLE `user` (
   `user_profession` int(10) UNSIGNED DEFAULT NULL,
   `user_gender` int(11) DEFAULT NULL,
   `user_maritalstatus` varchar(32) DEFAULT NULL,
-  `user_address` text,
+  `user_address` varchar(32) DEFAULT NULL,
   `user_city` varchar(255) NOT NULL,
   `user_joindate` date DEFAULT NULL,
   `user_country` int(32) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`user_id`, `user_email`, `user_contact_email`, `user_password`, `user_firstname`, `user_lastname`, `user_phonenumber`, `user_username`, `user_avatar`, `user_bio`, `user_dob`, `user_profession`, `user_gender`, `user_maritalstatus`, `user_address`, `user_city`, `user_joindate`, `user_country`) VALUES
-(47, 'markus.sahrakorpi@gmail.com', 'markus.sahrakorpi@gmail.com', '123123', 'Markus', 'Sahrakorpi', '+123456789', 'MarkusSahrakorpi', '../resources/useravatars/av3.jpg', NULL, '1212-12-12', 19, 2, NULL, 'Gonapolku 57', 'PaskalÃ¤Ã¤vi', '2017-02-12', 64),
-(48, 'kana@kalkkuna.fi', '', '456', 'Kana', 'Kalkkuna', '123123123', 'KanaKalkkuna', '../resources/userAvatars/person.jpg', NULL, NULL, 96, NULL, NULL, NULL, '', '2017-02-12', NULL),
-(49, 'asd@ggg.com', 'asd@ggg.com', '1234', 'Markus', 'Sahrakorpi', '123123', 'MarkusSahrakorpi6', '../resources/images/userAvatars/person.jpg', NULL, NULL, NULL, NULL, NULL, NULL, '', '2017-02-20', NULL);
+(1, 'markus.sahrakorpi@gmail.com', 'markus.sahrakorpi@gmail.com', '$2y$10$Xf/jYgA8jzLVodCBPxBBn.ldGVJWnH3o.NkZ3jsaazELZUbVdE83W', 'Markus', 'Sahrakorpi', '+358456383628', 'MarkusSahrakorpi', '../../resources/useravatars/cc3.png', NULL, '1111-11-11', 19, 61, NULL, 'Gonapolku 27', 'Gonasto', '2017-03-02', 64);
 
 -- --------------------------------------------------------
 
@@ -512,20 +512,22 @@ INSERT INTO `user` (`user_id`, `user_email`, `user_contact_email`, `user_passwor
 CREATE TABLE `works` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
-  `title` varchar(64) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `url` varchar(255) DEFAULT NULL,
-  `time_start` date DEFAULT NULL,
-  `time_end` date DEFAULT NULL
+  `work_title` varchar(64) NOT NULL,
+  `work_description` varchar(512) NOT NULL,
+  `work_url` varchar(255) DEFAULT NULL,
+  `work_time_start` date DEFAULT NULL,
+  `work_time_end` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `works`
 --
 
-INSERT INTO `works` (`id`, `user_id`, `title`, `description`, `url`, `time_start`, `time_end`) VALUES
-(1, 47, 'PHP Application', 'A PHP application for a course in school. The aim is to create a complete, usable application utilizing Apache, MySQL database and PHP.', 'https://github.com/Gizwiz/FoundUp', '2017-02-01', '2017-02-28'),
-(3, 47, 'Dynamic Web Application', 'A dynamic Spotify Application for a course in school. The goal was to utilize Javasctipt and Ajax to create a dynamic application.', 'https://github.com/Gizwiz/SpotifyWebApp', '2017-02-02', NULL);
+INSERT INTO `works` (`id`, `user_id`, `work_title`, `work_description`, `work_url`, `work_time_start`, `work_time_end`) VALUES
+(8, 1, 'PHP/MySQL', 'asd', 'https://github.com/Gizwiz/FoundUp', '2017-03-19', '0000-00-00'),
+(10, 1, 'test', 'tes', '', '2017-03-21', '0000-00-00'),
+(11, 1, 'test', 'tes', '', '2017-03-21', '0000-00-00'),
+(12, 1, 'ftj', 'fjyjfj', '', '0000-00-00', '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -594,22 +596,22 @@ ALTER TABLE `field`
 -- AUTO_INCREMENT for table `gender`
 --
 ALTER TABLE `gender`
-  MODIFY `gender_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `gender_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 --
 -- AUTO_INCREMENT for table `profession`
 --
 ALTER TABLE `profession`
-  MODIFY `profession_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `profession_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `user_id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `works`
 --
 ALTER TABLE `works`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Constraints for dumped tables
 --
