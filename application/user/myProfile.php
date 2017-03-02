@@ -1,6 +1,6 @@
 <?php require '../../components/authentication.php' ?>
 <?php require '../../components/session-check.php' ?>
-<?php include '../../components/getUserInfo.php' ?>
+
 
 <?php include '../../controllers/headApplication.php' ?>
 
@@ -10,23 +10,23 @@
 	<?php include '../../controllers/navApplication.php'; ?>
 
 	<div class="container-fluid">
-
+		
 		<div class="row" id="myInfo">
 
-			<div class = "col-md-4" id="uImg">
+			<div class = "col-md-3">
 				
 
 								<!-- Get and display user avatar image -->
 				<?php include '../../components/getImage.php' ?>
-				<img src="<?php echo $user_avatar; ?>" alt="<?php echo $user_avatar; ?>">
+				<img src="<?php echo $user_avatar; ?>" alt="<?php echo $user_avatar; ?>" id="uImg">
 				<br>
-				
+
 			</div>
 			
-			<div class= "col-md-4" id="name">
+			<div class= "col-md-5" id="name">
 
-				
-				<h1><br><?php echo $user_firstname." ".$user_lastname; ?></h1>
+				<br>
+				<h1><?php echo $user_firstname." ".$user_lastname; ?></h1>					
 				<h3 id="profession"><?php echo $user_profession; ?></h3>
 				<h4><?php echo $user_city.', '.$user_country; ?></h4>
 				<br><br>
@@ -35,17 +35,21 @@
 				<?php include '../../components/userActions.php' ?>
 
 			</div>
-			<div class="col-md-4" id="editProfileButton">
-				<form method="post" action="../../components/editUserProfileRedirection.php">
-					<input type="submit" name="edit" value="Edit Profile">
-				</form>
+			<div class = "col-md-3">
+					
+				<div id="editProfileButton">
+					<form method="post" action="../../components/editUserProfileRedirection.php">
+						<input type="submit" name="edit" value="Edit Profile">
+					</form>
+				</div>
+				
 			</div>
 
 		</div>
 		<br>
 		<div class="row" id="about">
-			<div class="col-md-2"></div>
-			<div class= "col-md-8" style="text-align: left">
+			<div class="col-md-3"></div>
+			<div class= "col-md-6" style="text-align: left">
 				
 				<ul class="nav nav-tabs">
 					<li class="active"><a data-toggle="tab" href="#contactInformation">Contact Information</a></li>
@@ -75,7 +79,7 @@
 				</div>
 			</div>
 			
-			<div class="col-md-2"></div>
+		<div class="col-md-3"></div
 
 		</div>
 		

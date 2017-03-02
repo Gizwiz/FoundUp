@@ -56,6 +56,8 @@
 							$pw_css = $error_css;
 							$pw_error = true;
 						} else {
+							//password hasing
+							$company_password = password_hash($company_password, PASSWORD_DEFAULT);
 							$pw_css = $okay_css;
 							$pw_error = false;
 						}
@@ -67,20 +69,32 @@
 						}
 						
 						if($error){
-							$errmsg = $name_error.'.'.$email_error.'.'.$pw_error;
+				
 						} else {
+							
+							/* checks for matching email in user databse*/
 							include 'database/userdbconnect.php';
-							include 'database/companydbconnect.php';
-							
-							$sql = "SELECT company_id FROM company WHERE company_username='$company_username'";
+							//check if an individual account with the email already exists
+							$sql = "SELECT user_email FROM user";
 							$res = $conn->query($sql);
-							if($res->num_rows==0){
-								
-							} else {
-								$company_username = $company_username.mt_rand(0,9);
+
+
+							if($res->num_rows>0){
+									//if an email match is found, produce errors
+								while($row=$res->fetch_assoc()){
+									if($row['user_email']===$company_email){
+										$errmsg = 'An account with this email already exists.';
+										$email_css = $error_css;
+										$error = true;
+									}
+
 							}
-							
-							//check if an account with the email already exists
+							}
+							$conn->close();
+								
+							/*checks for matching email in company database*/
+							include 'database/companydbconnect.php';
+							//check if a company account with the email already exists
 							$sql = "SELECT company_email FROM company";
 							$res = $conn->query($sql);
 							if($res->num_rows>0){
@@ -88,48 +102,34 @@
 									if($row['company_email']===$company_email){
 										$errmsg = "An account with this email already exists.";
 										$email_css = $error_css;
+										$email_error = true;
 										$error = true;
 									}
 								}
 							}
-							
-							$sql = "SELECT user_email FROM user";
-							$res = $conn->query($sql);
-
-							if($res->num_rows>0){
-									//if an email match is found, produce errors
-								while($row=$res->fetch_assoc()){
-									if($row['user_email']===$user_email){
-										$errmsg = 'An account with this email already exists.';
-										$email_css = $error_css;
-										$error = true;
-									}
-
-								}
-							}
-
+						
 														
-					if(!$error){
-						$errmsg = "	error";
-						//if no error, create account
-						$sql = "
-							INSERT INTO company (
-								company_name,
-								company_email,
-								company_password,
-								company_username,
-								company_avatar,
-								company_joindate
-							)
-							VALUES (
-								'$company_name',
-								'$company_email',
-								'$company_password',
-								'$company_username',
-								'../../resources/companyAvatars/startup.jpg',
-								CURRENT_TIMESTAMP
-							)
-						";
+						if(!$error){
+							$errmsg = "	error";
+							//if no error, create account
+							$sql = "
+								INSERT INTO company (
+									company_name,
+									company_email,
+									company_password,
+									company_username,
+									company_avatar,
+									company_joindate
+								)
+								VALUES (
+									'$company_name',
+									'$company_email',
+									'$company_password',
+									'$company_username',
+									'../../resources/companyAvatars/startup.jpg',
+									CURRENT_TIMESTAMP
+								)
+							";
 					
 					session_start();
 					mysqli_query($conn,$sql) or die(mysqli_error($conn));

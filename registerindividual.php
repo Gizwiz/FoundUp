@@ -82,6 +82,8 @@
 						$errmsg = $errmsg . "<br> Passwords do not match.";
 					
 					} else {
+						//password hasing
+						$user_password = password_hash($user_password, PASSWORD_DEFAULT);
 						$pw_css = $okay_css;
 						$pw_error = false;
 					}
@@ -96,23 +98,23 @@
 						
 						
 					} else {
-						include 'database/userdbconnect.php';
+						/*checks for matching email in company database*/
 						include 'database/companydbconnect.php';
-						
-						$sql = "SELECT user_id FROM user WHERE user_username='$user_username' ";
+						/*
+						$sql = "SELECT company_id FROM company WHERE company_username='$user_username' ";
 						$res = $conn->query($sql);
 						if($res->num_rows==0){
 							
 						} else {
 							$user_username = $user_username.mt_rand(0,9);	
-						}
+						}*/
 						
 						//check if a company account with the email already exists
 							$sql = "SELECT company_email FROM company";
 							$res = $conn->query($sql);
 							if($res->num_rows>0){
 								while($row=$res->fetch_assoc()){
-									if($row['company_email']===$company_email){
+									if($row['company_email']===$user_email){
 										$errmsg = "An account with this email already exists.";
 										$email_css = $error_css;
 										$email_error = true;
@@ -121,9 +123,15 @@
 								}
 							}
 						
+
+						$conn->close();
+						
+						/* checks for matching email in user databse*/
+						include 'database/userdbconnect.php';
 						//check if an individual account with the email already exists
 						$sql = "SELECT user_email FROM user";
 						$res = $conn->query($sql);
+
 						
 						if($res->num_rows>0){
 								//if an email match is found, produce errors
@@ -134,7 +142,7 @@
 									$error = true;
 								}
 								
-							}
+						}
 								}
 							//if nothing found push info into the database and create account							
 							if(!$error){

@@ -1,6 +1,5 @@
 <?php require '../../components/authentication.php' ?>
 <?php require '../../components/session-check.php' ?>
-<?php include '../../components/getUserInfo.php' ?>
 <?php
 	$current_user = $_SESSION['user_username'];
 ?>
@@ -10,28 +9,38 @@
 	<body>
 		
 <?php include '../../controllers/navApplication.php'; ?>
+		
 	
 	<div class="container-fluid">
+
 		<div class="row" id="frontPageTop">
-			<br><br>
-			<div class="col-lg-4">
-				
-				<?php include '../../components/getImage.php' ?>
-				<img src="<?php echo $user_avatar ?>" alt="userImage" style="display:block; float:left; margin-left:5%;"></img>
-				<h4>Currently logged in as</h3>
-				<?php 
-					echo '<h4>'.$user_firstname.' '.$user_lastname.'<br>'.$user_email.'</h4>';
-				?>
+
+			
+		</div>
+		
+
+		<div class="row" id="frontPageSearchSuggestions">
+			<div class="col-lg-2">
+
 			</div>
-			<div class="col-lg-4">
-				
-				<h1>Haloo</h1>
-				
+			<div class="col-lg-8">
+				<?php include '../../controllers/suggestionsCarousel.php' ?>
 			</div>
-			<div class="col-lg-4">
+			
+			<div class="col-lg-2">
+				
 			</div>
 		</div>
+		
+		<div class="row" id="frontPageSearch">
+		
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6"><h1>Search For a Team</h1></div>
+			<div class="col-lg-3"></div>
+			
 		</div>
 
-<?php include '../../controllers/suggestionsCarousel.php' ?>
+
+		</div>
+
 	</body>
