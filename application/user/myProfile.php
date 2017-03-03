@@ -48,8 +48,8 @@
 		</div>
 		<br>
 		<div class="row" id="about">
-			<div class="col-md-3"></div>
-			<div class= "col-md-6" style="text-align: left">
+			<div class="col-xs-3"></div>
+			<div class= "col-xs-6" style="text-align: left">
 				
 				<ul class="nav nav-tabs">
 					<li class="active"><a data-toggle="tab" href="#contactInformation">Contact Information</a></li>
@@ -79,7 +79,7 @@
 				</div>
 			</div>
 			
-		<div class="col-md-3"></div
+		<div class="col-xs-3">asd</div>
 
 		</div>
 		

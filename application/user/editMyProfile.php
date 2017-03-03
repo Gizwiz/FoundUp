@@ -196,7 +196,7 @@
 										<form action="../../components/editUserWorks.php" class="form-group" method="post">
 											Title: <input type="text" name="work_title" value="<?php echo $work_title ?>" placeholder="Title of work / Name of project"><br>
 											Description (max. 512 characters): <textarea name="work_description" style="width:100%; height: 20%; resize:none;" maxlength="512" placeholder="Description"><?php echo $work_description ?></textarea><br>
-											URL: <input type="text" name="work_url" value="<?php echo $work_url ?>";placeholder="http://www.url.com" ><br>
+											URL: <input type="text" name="work_url" value="<?php echo $work_url ?>"placeholder="http://www.url.com" ><br>
 											Start date (YYYY-MM-DD):
 											<input type="text" class="form-control" name="work_start_time" id="datepicker1" value="<?php echo $work_time_start ?>" placeholder="YYYY-MM-DD">
 											<script type="text/javascript">
@@ -231,15 +231,18 @@
 							</div>
 						</div><!-- END ADD WORK MODAL -->
 						
-						<script>
-							function clicked(){
-								console.log("CLICKED");	
-							}
-						
-						</script>
+
 						
 						<!-- PLUS BUTTON TO OPEN MODAL TO ENTER WORK INFO -> SUBMIT -->
 						<? include getUserWorks.php ?>
+						<script>
+							function deleteEntry(id){
+								$(document).ready(function(){
+
+
+							}
+						
+						</script>
 					</div>
 				</div>
 			</div>
@@ -251,8 +254,6 @@
 
 			</div>
 		</div>
-		
-		
-	</div>
+
 	
 </body>
