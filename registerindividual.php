@@ -156,6 +156,7 @@
 									user_password,
 									user_username,
 									user_avatar,
+									user_country,
 									user_joindate
 
 								)
@@ -168,6 +169,7 @@
 									'$user_password',
 									'$user_username',
 									'../../resources/userAvatars/person.jpg',
+									'1',
 									CURRENT_TIMESTAMP
 
 								)

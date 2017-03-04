@@ -1,12 +1,30 @@
-<?php require '../../components/authentication.php' ?>
-<?php require '../../components/session-check.php' ?>
-<?php include '../../components/getUserInfo.php' ?>
+ <?php
+if(!file_exists('../../components/authentication.php')){
+require '../components/authentication.php';
+} else {
+require '../../components/authentication.php';
+}
+if(!file_exists( '../../components/session-check.php')){
+require '../components/session-check.php';
+} else {
+require '../../components/session-check.php';
+} 
+if(!file_exists('../../components/getUserInfo.php')){
+include '../components/getUserInfo.php';
+} else {
+include '../../components/getUserInfo.php';
+}
+?>
 
 <?php
 
 	//Get user proficiencies from database
 	$work_title = $work_description = $work_url = $work_time_start = $work_time_end = $work_time_combine = "";
-include '../../database/userdbconnect.php';
+if(!file_exists('../../database/userdbconnect.php')){
+require '../database/userdbconnect.php';
+} else {
+require '../../database/userdbconnect.php';
+}
 $sql = "
 		SELECT 
 			id,
@@ -44,16 +62,18 @@ $sql = "
 				$work_time_combine= '<h4>Complete: '.$work_time_end.'</h4>';
 			}	
 			
-			echo '<div style="border-bottom: 1px solid black">
+			echo '<div style="border-top: 1px solid black">
 			<br>
 			<button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#editWorkModal">EDIT</button>
 			&nbsp;&nbsp;&nbsp;
-			<button id="'.$id.'"onclick="deleteEntry('.$id.')" class="btn btn-default btn-lg">DELETE</button>
+
+			<button id='.$id.'" type="button" onclick="setId('.$id.')" class="btn btn-default btn-lg" data-toggle="modal" data-target="#confirmWorkDeletionModal">DELETE</button>
+
 			<h3>'.$work_title.'<i>'.$work_time_combine.'</i></h3><p>'.$work_description.'</p><a href="'.$work_url.'">'.$work_url.'</a><br><br></div>';
 			
 		}
 	} else {
-		echo "<h3>No projects.</h3>";	
+		echo '<div><br><h3>No projects.</h3></div>';	
 	}
 
 $conn->close();

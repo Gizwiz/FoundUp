@@ -200,6 +200,7 @@ $country = array(
 	"Ukraine",
 	"United Arab Emirates",
 	"United Kingdom",
+	"United States of America, The",
 	"Uruguay",
 	"Uzbekistan",
 	"Vanuatu",

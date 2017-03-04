@@ -10,7 +10,7 @@
                      <span class="icon-bar"></span> 
                      <span class="icon-bar"></span> 
                  </button> 
-                 <a class="navbar-brand" href="userFrontpage.php?user=<?php echo $_SESSION['user_username']; ?>" id="logo">
+                 <a class="navbar-brand" href="../../application/user/userFrontpage.php?user=<?php echo $_SESSION['user_username']; ?>" id="logo">
 					FoundUp
 				 </a> 
 				<?php include '../../components/getImage.php' ?>
@@ -24,23 +24,24 @@
              <div class="collapse navbar-collapse" id="navLinks"> 
                  <ul class="nav navbar-nav navbar-right"> 
 					 <li>
-						<a href="userFrontpage.php?user=<?php echo $_SESSION['user_username']; ?>">Front Page</a>
+						<a href="../../application/user/userFrontpage.php?user=<?php echo $_SESSION['user_username']; ?>">Front Page</a>
 					 </li>
 					 <li>
-						<a href="myProfile.php?user=<?php echo $_SESSION['user_username']; ?>">My Profile</a>
+						<a href="../../application/user/myProfile.php?user=<?php echo $_SESSION['user_username']; ?>">My Profile</a>
 					 </li>
 					 <li>
-					 	<a href="myContacts.php?user=<?php echo $_SESSION['user_username']; ?>">Contacts</a>
+					 	<a href="../../application/user/myContacts.php?user=<?php echo $_SESSION['user_username']; ?>">Contacts</a>
 					 </li>
                      <li> 
-                         <a href="myInbox.php?user=<?php echo $_SESSION['user_username']; ?>">Messages</a> 
+                         <a href="../../application/user/myInbox.php?user=<?php echo $_SESSION['user_username']; ?>">Messages</a> 
                      </li>
 					 <li>
-					 	<a href="userSettings.php?user=<?php echo $_SESSION['user_username']; ?>">Settings</a>
+					 	<a href="../../application/user/userSettings.php?user=<?php echo $_SESSION['user_username']; ?>">Settings</a>
 					 </li>
                      <li> 
                          <a href="../../components/logout.php">Log out</a> 
                      </li> 
+					 <!--
 					 <li>
 						<div class="input-group stylish-input-group" id="searchNavBar" style="width:10em; margin-top: 5%;">
 							<input type="text" class="form-control"  placeholder="Search" id="searchBar" onkeydown="checkForEnterKey(event)" >
@@ -51,7 +52,7 @@
 							</div>
 						</div>
 					 </li>
-                     
+                     -->
                  </ul> 
             </div> 
              <!-- /.navbar-collapse --> 

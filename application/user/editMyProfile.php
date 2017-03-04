@@ -71,7 +71,7 @@
 				<br>
 
 				<form action="../../components/saveProfileEdits.php" method="post" class="editSelect">
-					<select name="user_profession" id="professionSelect" onchange=this.form.submit()>
+					<select name="user_profession" id="professionSelect" onchange="this.form.submit()">
 						<option>--Select your profession--</option>
 					</select>
 				</form>
@@ -95,7 +95,7 @@
 					<li class="active"><a data-toggle="pill" href="#editWorkInformation">Work and Projects</a></li>
 				</ul>
 				<div class="tab-content">
-				
+				<!-- CONTACT INFORMATION -->
 					<div id="editContactInformation" class="tab-pane fade in" style="height: 50vh">
 									
 						<form action="../../components/saveProfileEdits.php" method="post" style="text-align:left">
@@ -108,7 +108,7 @@
 							Country:<select name="user_country" style="width:100%;"><?php include '../../components/countriesDropdown.php' ?></select><br>
 						</form>
 					</div>
-					
+					<!-- BASIC INFORMATION -->
 					<div id="editBasicInformation" class="tab-pane fade" style="height: 50vh">
 						<form action="../../components/saveProfileEdits.php" method="post" style="text-align:left">
 							<h2 style="text-align: center">Basic Information</h2>
@@ -119,130 +119,45 @@
 						</form>
 					</div>
 					
+					<!-- WORK INFORMATION -->
 					<div id="editWorkInformation" class="tab-pane fade in active" style="height: 50vh">
 
 						<h2 style="display:inline-block;">Add an entry: &nbsp;</h2>
-						
 						<!-- Trigger Modal Button -->
 						<button type="button" class="btn btn-default btn-circle btn-lg" data-toggle="modal" data-target="#addWorkModal">+</button>
-						
-						<!-- Modal -->
-						<div id="addWorkModal" class="modal fade" role="dialog">
-							<div class="modal-dialog">
-								<!-- Modal Content -->
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h2 class="modal-title">Add Work Information</h2>
-									</div>
-									<div class="modal-body">
-										<form action="../../components/addUserWorks.php" class="form-group" method="post">
-											Title: <input type="text" name="work_title" placeholder="Title of work / Name of project"><br>
-											Description (max. 512 characters): <textarea name="work_description" style="width:100%; height: 20%; resize:none;" maxlength="512" placeholder="Description"></textarea><br>
-											URL: <input type="text" name="work_url" placeholder="http://www.url.com" ><br>
-											Start date (YYYY-MM-DD):
-											<input type="text" class="form-control" name="work_start_time" id="datepicker1" placeholder="YYYY-MM-DD">
-											<script type="text/javascript">
-												$("#datepicker1").datepicker({
-													format: "yyyy-mm-dd",
-													orientation: "bottom left",
-													autoclose: true
-												});
-
-											</script>
-											End date (YYYY-MM-DD):
-											<input type="text" class="form-control" name="work_end_time" id="datepicker2" placeholder="YYYY-MM-DD">
-											
-											<script type="text/javascript">
-												$("#datepicker2").datepicker({
-													format: "yyyy-mm-dd",
-													orientation: "bottom left",
-													autoclose: true
-												});
-
-											</script>
-											<input class="btn btn-primary btn-lg" type="submit" name="submitWorkInfo" value="Save" style="width:25%">
-
-										</form>
-										
-										<div class="modal-footer">
-											<button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div><!-- END ADD WORK MODAL -->
-						
-						
-						
 						<br><br>
-						
-						<div style="border-top: 1px solid black" class="pre-scrollable">
-							<?php include '../../components/GetWorksWithEditOption.php' ?>
-						</div>
-						
-						
-						<!--Edit Work Modal -->
-						<div id="editWorkModal" class="modal fade" role="dialog">
-							<div class="modal-dialog">
-								<!-- Modal Content -->
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h2 class="modal-title">Add Work Information</h2>
-									</div>
-									<div class="modal-body">
-										<form action="../../components/editUserWorks.php" class="form-group" method="post">
-											Title: <input type="text" name="work_title" value="<?php echo $work_title ?>" placeholder="Title of work / Name of project"><br>
-											Description (max. 512 characters): <textarea name="work_description" style="width:100%; height: 20%; resize:none;" maxlength="512" placeholder="Description"><?php echo $work_description ?></textarea><br>
-											URL: <input type="text" name="work_url" value="<?php echo $work_url ?>"placeholder="http://www.url.com" ><br>
-											Start date (YYYY-MM-DD):
-											<input type="text" class="form-control" name="work_start_time" id="datepicker1" value="<?php echo $work_time_start ?>" placeholder="YYYY-MM-DD">
-											<script type="text/javascript">
-												$("#datepicker1").datepicker({
-													format: "yyyy-mm-dd",
-													orientation: "bottom left",
-													autoclose: true
-												});
 
-											</script>
-											End date (YYYY-MM-DD):
-											<input type="text" class="form-control" name="work_end_time" id="datepicker2" value="<?php echo $work_time_end ?>"placeholder="YYYY-MM-DD">
-											
-											<script type="text/javascript">
-												$("#datepicker2").datepicker({
-													format: "yyyy-mm-dd",
-													orientation: "bottom left",
-													autoclose: true
-												});
+						<?php include '../../components/getWorksWithEditOption.php' ?>
 
-											</script>
-											<input class="btn btn-primary btn-lg" type="submit" name="submitWorkInfo" value="Save" style="width:25%">
-
-										</form>
-										
-										<div class="modal-footer">
-											<button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div><!-- END ADD WORK MODAL -->
-						
-
-						
 						<!-- PLUS BUTTON TO OPEN MODAL TO ENTER WORK INFO -> SUBMIT -->
-						<? include getUserWorks.php ?>
 						<script>
-							function deleteEntry(id){
-								$(document).ready(function(){
-
-
+							
+							var endId;
+							
+							function setId(id){
+								endId = id;
 							}
-						
+							
+							function getId(){
+								return endId;
+							}
+							
+							function deleteEntry(id){
+								
+								$.ajax({
+									type: "post",
+									url: "../../components/deleteUserWork.php",
+									data:"id="+id,
+									success:function(data){
+										//set html as ajax result and re-add buttons to pill
+										$("#editWorkInformation").html(
+											"<h2 style=\"display:inline-block;\">Add an entry: &nbsp;</h2><button type=\"button\" class=\"btn btn-default btn-circle btn-lg\" data-toggle=\"modal\" data-target=\"#addWorkModal\">+</button><br><br>"+data);									
+										}
+								});
+							};
+							
 						</script>
+
 					</div>
 				</div>
 			</div>
@@ -255,5 +170,119 @@
 			</div>
 		</div>
 
+<!-- Add New Work Modal -->
+<div id="addWorkModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal Content -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">Add Work Information</h2>
+			</div>
+			<div class="modal-body">
+				<form action="../../components/addUserWorks.php" class="form-group" method="post">
+					Title: <input type="text" name="work_title" placeholder="Title of work / Name of project"><br>
+					Description (max. 512 characters): <textarea name="work_description" style="width:100%; height: 20%; resize:none;" maxlength="512" placeholder="Description"></textarea><br>
+					URL: <input type="text" name="work_url" placeholder="http://www.url.com" ><br>
+					Start date (YYYY-MM-DD):
+					<input type="text" class="form-control" name="work_start_time" id="datepicker1" placeholder="YYYY-MM-DD">
+					<script type="text/javascript">
+						$("#datepicker1").datepicker({
+							format: "yyyy-mm-dd",
+							orientation: "bottom left",
+							autoclose: true
+						});
+
+					</script>
+					End date (YYYY-MM-DD):
+					<input type="text" class="form-control" name="work_end_time" id="datepicker2" placeholder="YYYY-MM-DD">
+
+					<script type="text/javascript">
+						$("#datepicker2").datepicker({
+							format: "yyyy-mm-dd",
+							orientation: "bottom left",
+							autoclose: true
+						});
+
+					</script>
+					<input class="btn btn-primary btn-lg" type="submit" name="submitWorkInfo" value="Save" style="width:25%">
+
+				</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div><!-- END ADD WORK MODAL -->
+	
+	
+<!--Edit Work Modal -->
+<div id="editWorkModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal Content -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">Add Work Information</h2>
+			</div>
+			<div class="modal-body">
+				<form action="../../components/editUserWorks.php" class="form-group" method="post">
+					Title: <input type="text" name="work_title" value="<?php echo $work_title ?>" placeholder="Title of work / Name of project"><br>
+					Description (max. 512 characters): <textarea name="work_description" style="width:100%; height: 20%; resize:none;" maxlength="512" placeholder="Description"><?php echo $work_description ?></textarea><br>
+					URL: <input type="text" name="work_url" value="<?php echo $work_url ?>"placeholder="http://www.url.com" ><br>
+					Start date (YYYY-MM-DD):
+					<input type="text" class="form-control" name="work_start_time" id="datepicker3" value="<?php echo $work_time_start ?>" placeholder="YYYY-MM-DD">
+					<script type="text/javascript">
+						$("#datepicker3").datepicker({
+							format: "yyyy-mm-dd",
+							orientation: "bottom left",
+							autoclose: true
+						});
+
+					</script>
+					End date (YYYY-MM-DD):
+					<input type="text" class="form-control" name="work_end_time" id="datepicker4" value="<?php echo $work_time_end ?>"placeholder="YYYY-MM-DD">
+
+					<script type="text/javascript">
+						$("#datepicker4").datepicker({
+							format: "yyyy-mm-dd",
+							orientation: "bottom left",
+							autoclose: true
+						});
+
+					</script>
+					<input class="btn btn-primary btn-lg" type="submit" name="submitWorkInfo" value="Save" style="width:25%">
+
+				</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+				</div>
+			
+
+		</div>
+	</div>
+</div><!-- END EDIT WORK MODAL -->
+
+<div id="confirmWorkDeletionModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">Delete this entry?</h2>
+			</div>
+			<div class="modal-body" style="text-align:center">
+				<br>
+				<button class="btn btn-danger btn-lg btn-ConfirmDelete" onclick="deleteEntry(getId())" data-dismiss="modal">DELETE</button>
+				<button class="btn btn-primary btn-lg btn-ConfirmDelete" data-dismiss="modal">CANCEL</button>
+				<br><br>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 	
 </body>

@@ -51,7 +51,7 @@
 			<div class="col-xs-3"></div>
 			<div class= "col-xs-6" style="text-align: left">
 				
-				<ul class="nav nav-tabs">
+				<ul class="nav nav-tabs nav-justified">
 					<li class="active"><a data-toggle="tab" href="#contactInformation">Contact Information</a></li>
 					<li><a data-toggle="tab" href="#basicInformation">Basic Information</a></li>
 					<li><a data-toggle="tab" href="#workInformation">Work and Projects</a></li>
@@ -71,7 +71,7 @@
 						<h4>Marital Status:<?php echo ' '.$user_maritalstatus; ?></h4>
 						<h4>Join date:<?php echo ' '.$user_joindate; ?></h4>
 					</div>
-					<div id="workInformation" class="tab-pane fade pre-scrollable">
+					<div id="workInformation" class="tab-pane fade">
 						<h2>Work and Projects</h2><br>
 						<?php include '../../components/getUserWorks.php' ?>
 						<br><br>
