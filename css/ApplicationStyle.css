@@ -28,6 +28,11 @@ p{
 	margin-top:4%;
 }
 
+#frontPageSearchChoice {
+	text-align: center;
+	margin-top: 2%;
+}
+
 #frontPageTop{
 	margin-top: 2%;
 	text-align: center;
@@ -41,7 +46,7 @@ p{
 
 #frontPageSearchSuggestions{
 	text-align: center;
-	margin-top: 1%;
+	margin-top: 4%;
 }
 
 
@@ -201,10 +206,24 @@ li{
 	border: 1px solid black;
 }
 
+.modal input{
+	width:100%;
+	margin-bottom: 2%;
+	border: 1px solid black;	
+}
+
+.modal-title{
+	text-align: center;
+}
+
 /*/work and projects*/
 
 #editWorkInformation .button{
 	display: inline-block;
+}
+
+#editWorkInformation div{
+	border-top: 1px solid black;
 }
 .btn-info{
 	border: 1px solid black;
@@ -229,27 +248,79 @@ li{
 	width: 60vw;
 }
 
+#confirmWorkDeletionModal{
+	margin-top: 10%;
+}
+
+.btn-ConfirmDelete{
+	text-align: center;
+	margin-left: 5%;
+	margin-right:5%;
+	height: 8vh;
+	width: 10vw;
+}
+
 /*SEARCH*/
 
 #searchPills input{
-	width:50%;
+	width:90%;
 	display:block;
 	margin-bottom: 1%;
 }
+#searchPills select{
+	width:100%;
+	display:block;
+	margin-bottom: -3%;
+}
 .searchAvatar{
-	width: 9em;
-	height: 9em;
-	padding: 1em;
+	width: 5em;
+	height: 5em;
+	padding: 0.7em;
+	float:left;
 }
 
-#suggestionResults{
+.pre-scrollable{
+	max-height: 65vh;
+	overflow-y: scroll;
+}
+
+.btn-searchCustom{
+	width:100%;
+}
+
+.btn-searchCustom:focus{
+	background-color: white;
+}
+
+#suggestionResults div{
+	border-bottom: 1px solid black;
+	height: 10vh;
+}
+
+#suggestionResults p{
+	margin-top: 4%;
 
 }
 
-#suggestionResults div:hover{
-	background-color: beige;
-	color:red;
+#suggestionResults a{
+	color:black;
+}
+
+#suggestionResults div:active{
+	background-color: white;
 }	
+
+#suggestionResults a:hover{
+	text-decoration: none;
+	color: dodgerblue;
+}
+
+/*PROFILE PREVIEW MODAL*/
+
+.profilePreviewAvatar{
+	width:2em;
+	height: 2em;
+}
 
 .navbar-header img{
 	width: 4vw;

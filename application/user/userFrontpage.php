@@ -17,7 +17,36 @@
 
 			
 		</div>
+				
+		<div class="row" id="frontPageSearch">
 		
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6"><h1>Search For a Team</h1></div>
+			<div class="col-lg-3"></div>
+			
+		</div>
+		
+		<div class="row" id="frontPageSearchChoice">
+		
+			<div class="col-xs-3"></div>
+			<div class="col-xs-3">
+				
+			
+				<form action="../shared/search.php" method="post">
+					<input type="submit" class="btn btn-default btn-lg" value="Search" name="userSearchButton">
+				
+			</div>
+
+			<div class="col-xs-3">
+
+	
+				<form action="../shared/search.php" method="post">
+					<input type="submit" class="btn btn-default btn-lg" value="Search" name="companySearchButton">
+				</form>
+			
+			</div>
+			<div class="col-xs-3"></div>
+		</div>
 
 		<div class="row" id="frontPageSearchSuggestions">
 			<div class="col-lg-2">
@@ -31,14 +60,7 @@
 				
 			</div>
 		</div>
-		
-		<div class="row" id="frontPageSearch">
-		
-			<div class="col-lg-3"></div>
-			<div class="col-lg-6"><h1>Search For a Team</h1></div>
-			<div class="col-lg-3"></div>
-			
-		</div>
+
 
 
 		</div>

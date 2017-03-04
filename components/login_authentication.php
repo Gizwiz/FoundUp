@@ -9,7 +9,7 @@
 		require '../database/userdbconnect.php';
 		
 		$login_email = $_POST['email'];
-		$login_password =$_POST['password'];
+		$login_password = $_POST['password'];
 		
 		
 		$sql = "SELECT user_email, user_password, user_username FROM user WHERE user_email = '$login_email' ";
@@ -33,6 +33,11 @@
 						exit();
 					} else {
 						echo 'passwords do not match';
+						$_SESSION['ERR'] = 'LOGINERROR';
+						session_write_close();
+						header("location: ../login.php");
+						$conn->close();
+						exit();
 					}
 				}
 			} 
@@ -40,8 +45,7 @@
 		//no matching result found
 		else {
 			
-			//session_write_close();
-			//header:('location: login.php?session=invalid');
+
 			
 		
 		$conn->close();
@@ -69,13 +73,18 @@
 						exit();
 					} else {
 						echo 'passwords do not match';
+						$_SESSION['ERR'] = 'LOGINERROR';
+						session_write_close();
+						header("location: ../login.php");
+						$conn->close();
+						exit();
 					}
 			}
 		} else {
 			echo 'Login Error';
 			$_SESSION['ERR'] = 'LOGINERROR';
 			session_write_close();
-			//header("location: ../login.php");
+			header("location: ../login.php");
 			$conn->close();
 			exit();
 		}
@@ -86,7 +95,7 @@
 		echo $login_password;
 		$_SESSION['ERR'] = 'LOGINERROR';
 		session_write_close();
-		//header("location: ../login.php");
+		header("location: ../login.php");
 		exit();
 	}
 

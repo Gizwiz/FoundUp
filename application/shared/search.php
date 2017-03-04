@@ -8,32 +8,57 @@
 
 <?php include '../../controllers/navApplication.php'; ?>
 
+<?php 
+	//sets the corect searchable pill depending on what the user pressed on the front page
+	$userSearchActive = $companySearchActive = "";
+	//$_GET will not prompt user to resend on page refresh unlike $_POST
+	if(isset($_GET['companySearchButton'])){
+		$companySearchActive = "active";
+		$userSearchActive = "";
+	}else if(isset($_GET['userSearchButton'])){
+		$userSearchActive = "active";
+		$companySearchActive = "";
+	} else {
+		$userSearchActive = "active";
+		$companySearchActive = "";
+	}
 
+?>
 	<script type="text/javascript">
-		function checkBackspace(event, str){
+		function checkBackspace(event){
 			if(event.keyCode === 8){
-				console.log(event);
-				suggestMatch(str);	
+				$("#searchProfession").val("%");
+				suggestMatch();	
 			}
 		}
 		
-		function suggestMatch(str){
-
+		function resetProfessionId(){
+			console.log("haloo");
+			$("#searchProfession").val("%");
+			suggestMatch();	
+		}
+		
+		function suggestMatch(){
+				console.log();
 				$(document).ready(function(){
-				var searchFname=$("#searchFname").val();
-				var searchLname=$("#searchLname").val();
-				$.ajax({
-					type: "post",
-					url: "../../components/getSearchResults.php",
-					data: "fname="+searchFname+"&lname="+searchLname,
-					success:function(data){
-						$("#suggestionResults").html(data);
-						/*$("#suggestionResults").find("div").each(function(index){
-							$(this).delay(125*index).fadeIn(400);
-						});
-						*/
-					}
-				});
+					var searchFname=$("#searchFname").val();
+					var searchLname=$("#searchLname").val();
+					var searchField=$("#searchField").val();
+					var searchProfession=$("#searchProfession").val();
+					var searchCountry=$("#searchCountry").val();
+					console.log(searchField+":"+searchProfession);
+					$.ajax({
+						type: "post",
+						url: "../../components/getSearchResults.php",
+						data: "fname="+searchFname+"&lname="+searchLname+"&field="+searchField+"&profession="+searchProfession+"&country="+searchCountry,
+						success:function(data){
+							$("#suggestionResults").html(data);
+							/*$("#suggestionResults").find("div").each(function(index){
+								$(this).delay(125*index).fadeIn(400);
+							});*/
+
+						}
+					});
 				});
 			
 		
@@ -43,36 +68,77 @@
 	</script>
 	
 	<!-- pills -->
-	<div class="container-fluid" style="margin-top: 3%">
-	
+	<div class="container" style="margin-top: 3%">
+
 		<div class="row" id="searchPills">
-		
-			<div class="col-md-2"></div>
-			
-			<div class="col-md-8">
+
+
+
+			<div class="col-md-12">
 				<br>
 				<ul class="nav nav-pills nav-justified">
-					<li class="active"><a data-toggle="pill" href="#searchForUser">People</a></li>
-					<li><a data-toggle="pill" href="#searchForCompany">StartUps</a></li>
+					<li class="<?php echo $userSearchActive ?>"><a data-toggle="pill" href="#searchForUser">People</a></li>
+					<li class="<?php echo $companySearchActive ?>"><a data-toggle="pill" href="#searchForCompany">StartUps</a></li>
 				</ul>
-				
+
 				<div class="tab-content">
-					<div id="searchForUser" class="tab-pane fade in active">
+					<!-- USER SEARCH PILL -->
+					<div id="searchForUser" class="tab-pane fade in <?php echo $userSearchActive ?>">
 						<br>
-						<h1>People</h1>
 						<div class="row">
 						<div class="col-xs-4">
-							First name:<input type="text" id="searchFname" onkeyup="suggestMatch(this.value)" onkeydown="checkBackspace(event, this.value)" >
-							Last name:<input type="text" id="searchLname" onkeyup="suggestMatch(this.value)" onkeydown="checkBackspace(event, this.value)" >
+							First name:<input type="text" id="searchFname" onkeyup="resetProfessionId()" onkeydown="checkBackspace(event)" >
+							Last name:<input type="text" id="searchLname" onkeyup="resetProfessionId()" onkeydown="checkBackspace(event)" >
 						</div>
 						<div class="col-xs-4">
-							Field: <input type="text" id="searchFname">
-							Profession: <input type="text" id="searchFname" >
-							
+							Field:
+
+							<!-- ajax to get prefessions based on selected field -->
+							<script type="text/javascript">
+								$(document).ready(function(){
+									$("#searchField").change(function(){
+										var field=$("#searchField").val();
+										$.ajax({
+											type: "post",
+											url: "../../components/fieldsDropdown.php",
+											data:"field="+field,
+											success:function(data){
+												$("#searchProfession").html(data);
+											}
+										});
+									});
+								});
+							</script>
+
+							<form>
+								<select name="searchField" id="searchField" onchange="resetProfessionId()">
+									<option>--Select professional field--</option>
+									<?php 
+										include '../../database/userdbconnect.php';
+										$sql = "SELECT field_id, field_name FROM field ORDER BY field_name";
+										$res = $conn->query($sql);
+
+										if($res->num_rows>0){
+											while($row = $res->fetch_assoc()){
+												echo "<option value='".$row['field_id']."'>".$row['field_name']."</option>";
+											}
+										} else {
+											echo "Databse error -- No results found";	
+										}
+									?>
+								</select>
+							</form>
+							Profession:
+
+							<select name="user_profession" id="searchProfession" onchange="suggestMatch()">
+								<option>--Select your profession--</option>
+							</select>
+
 						</div>
 						<div class="col-xs-4">
-							Country: <input type="text" id="searchFname">
+							Country: <select name="user_country" id="searchCountry" style="width:100%;" onchange="suggestMatch()"><?php include '../../components/countriesDropdown.php' ?></select>
 						</div>
+
 						</div>
 						<br>
 						<div class="row">
@@ -80,21 +146,48 @@
 								<div id="suggestionResults" class="pre-scrollable"></div>
 							</div>
 						</div>
+					</div> <!-- END USER SEARCH PILL -->
+
+					<!-- COMPANY SEARCH PILL -->
+					<div id="searchForCompany" class="tab-pane fade in <?php echo $companySearchActive ?>">
 					</div>
-					
-					<div id="searchForCompany" class="tab-pane fade">
-						<h1>StartUps</h1>
-					</div>
-				
+					<!-- END COMPANY SEARCH PILL -->
+
 				</div>
-				
-			
+
+
 			</div>
-			
-			<div class="col-md-2"></div>
-		
+
+
 		</div> <!-- end pills row-->
-	
+
 	</div> <!-- end pills  -->
+	<script>
+		function getPreviewProfile(id){
+			$.ajax({
+				type: "post",
+				url: "../../components/getSearchedUserProfilePreview.php",
+				data:"id="+id,
+				success:function(data){
+					$("#profilePreview").html(data);
+				}
+			});
+		}
+			
+			
+	
+	</script>
+	
+	<!-- MODAL:  preview user profile with button to go view full profile -->
+	<div id="previewUserProfile" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal Content -->
+			<div class="modal-content" id="profilePreview">
+				<!-- Modal Content generated back-end-->
+			</div>
+		</div>
+	</div>
+	
+
 	
 </body>
