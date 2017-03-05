@@ -215,20 +215,48 @@ footer{
 
 /*nav*/ 
 
+.navbar p{
+	color: #FF4D00;
+	display: inline-block;
+}
+
+.navbar-header img{
+	width: 4vw;
+	height: 6vh;
+	display: inline-block;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.navbar-header p{
+	display: inline-block;
+}
+
+.navbar .collapse{
+
+	margin-right: 2em;
+	
+}
+
+#navLinks> li:hover{
+	color:white;
+}
+
+
+
 .navbar-custom {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
   width: 100%;
-  z-index: 3;
   font-family: 'Open Sans', sans-serif;
- 
+
 }
 .navbar-custom .navbar-brand {
-  font-weight: 800;
+  	font-weight: 800;
+	font-size: 22px;
+	color: #007fff !important;
 }
 .navbar-custom .navbar-header .navbar-toggle {
-  color: #777777;
+ 	background-color: #4a4c4c;
   font-weight: 800;
   text-transform: uppercase;
   font-size: 12px;
@@ -238,23 +266,17 @@ footer{
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 1px;
+	color: white !important;
 }
 
-#navLinks{
-	margin-right: 2em;
-}
-#navLinks :hover{
-	color:lightgrey;
+.navbar-custom .nav li a:hover{
+	color:#939393 !important;
 }
 
-@media only screen and (max-width: 768px) {
-
-  
-.btn-default{
-	background-color: black;
-	color:white;
-	font-size: 26px;
-
+.navbar {
+  background-color: #4a4c4c;
+	  border:none;
+	  box-shadow: none;
 }
 
 }
@@ -282,6 +304,7 @@ footer{
   }
   
 }
+
 @media only screen and (min-width: 1170px) {
   .navbar-custom {
     -webkit-transition: background-color 0.3s;
@@ -301,7 +324,8 @@ footer{
     position: fixed;
     top: -61px;
     background-color: rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: 0px solid #f2f2f2;
+
     -webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
     transition: transform 0.3s;
@@ -330,7 +354,7 @@ footer{
   }
 }
 
-/*HEADER*/ 
+/*HEADER*/
 
 .intro-header {
   background-color: #c4d4ed;

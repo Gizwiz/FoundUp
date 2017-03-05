@@ -19,94 +19,48 @@ if(!file_exists ('../../database/userdbconnect.php')){
 
 
 <?php
-	
+	$user =  $_SESSION['user_username'];
 	//USER INFORMATION OF CURRENTLY LOGGED IN USER = OWN INFO
-	$user_id = $user_email = $user_firstname = $user_lastname = $user_phonenumber = $user_avatar = $user_bio = $user_dob = $user_profession = $user_gender = $user_maritalstatus = $user_address = $user_city = $user_joindate = $user_country = "";
-
-	$user_username = $_SESSION['user_username'];
-	$sql = "
-		SELECT
-			user_id,
-			user_contact_email,
-			user_firstname,
-			user_lastname,
-			user_phonenumber,
-			user_avatar,
-			user_bio,
-			user_dob,
-			user_profession,
-			user_gender,
-			user_maritalstatus,
-			user_address,
-			user_city,
-			user_joindate,
-			user_country
-		
-		FROM user
-		
-		WHERE user_username = '$user_username'
-		";
-
-	$res = $conn->query($sql);
-
-	if($res->num_rows>0){
-		while($row = $res->fetch_assoc()){
-			$user_id = $row['user_id'];
-			$user_email = $row['user_contact_email'];	
-			$user_firstname= $row['user_firstname'];
-			$user_lastname= $row['user_lastname'];
-			$user_phonenumber= $row['user_phonenumber'];
-			$user_avatar= $row['user_avatar'];
-			$user_bio= $row['user_bio'];
-			$user_dob= $row['user_dob'];
-			$user_profession= $row['user_profession'];
-			$user_gender= $row['user_gender'];
-			$user_maritalstatus= $row['user_maritalstatus'];		
-			$user_address= $row['user_address'];
-			$user_city = $row['user_city'];
-			$user_joindate= $row['user_joindate'];
-			$user_country= $row['user_country'];
-
-		}
-	} else {
-		$user_id = $user_email = $user_firstname = $user_lastname = $user_phonenumber = $user_bio = $user_dob = $user_profession = $user_gender = $user_maritalstatus = $user_address = $user_city = $user_joindate = $user_country = "N/A";	
-	}
-	
-	//get profession name from profession table using profession id form user table
-	$sql = "
-		SELECT profession_name FROM profession WHERE profession_id = '$user_profession'
-	";
-
-	$res = $conn->query($sql);
-
-	if($res->num_rows>0){
-		while($row = $res->fetch_assoc()){
-			
-			$user_profession = $row['profession_name'];	
-
-		}
-	} 
-	//get country name from country table using country id from user table
-	$sql = "
-		SELECT country_name FROM country WHERE country_id = '$user_country';
+	$user_id = $user_email = $user_firstname = $user_lastname = $user_phonenumber = $user_avatar = $user_bio = $user_skills = $user_dob = $user_profession = $user_gender = $user_maritalstatus = $user_address = $user_city = $user_joindate = $user_country = "";
+$sql = "
+	SELECT user.user_id, user.user_firstname, user.user_lastname, user.user_contact_email, user.user_phonenumber, user.user_avatar, user.user_profession, user.user_bio, user.user_skills, user.user_dob, user.user_maritalstatus, user.user_address, user.user_country, user.user_city, user.user_joindate, profession.profession_id, profession.profession_field_id, profession.profession_name, field.field_id, field.field_name, country.country_id, country.country_name, gender.gender_id, gender.gender_name
+	FROM user 
+	INNER JOIN profession 
+	ON user.user_profession=profession.profession_id 
+	INNER JOIN field 
+	ON profession.profession_field_id=field.field_id
+	INNER JOIN country
+	ON user.user_country=country.country_id
+	INNER JOIN gender
+	ON user.user_gender = gender.gender_id
+	WHERE user.user_username = '$user'
 	";
 	
-	$res = $conn->query($sql);
+$res = $conn->query($sql);
 
-	if($res->num_rows>0){
-		while($row = $res->fetch_assoc()){
-			
-			$user_country = $row['country_name'];	
-		}
+if($res->num_rows>0){
+	while($row = $res->fetch_assoc()){
+		$user_id = $row['user_id'];
+		$user_email = $row['user_contact_email'];	
+		$user_firstname= $row['user_firstname'];
+		$user_lastname= $row['user_lastname'];
+		$user_phonenumber= $row['user_phonenumber'];
+		$user_avatar= $row['user_avatar'];
+		$user_bio= $row['user_bio'];
+		$user_skills = $row['user_skills'];
+		$user_dob= $row['user_dob'];
+		$user_profession= $row['profession_name'];
+		$user_gender= $row['gender_name'];
+		$user_maritalstatus= $row['user_maritalstatus'];		
+		$user_address= $row['user_address'];
+		$user_city = $row['user_city'];
+		$user_joindate= $row['user_joindate'];
+		$user_country= $row['country_name'];
+
+	}
+} else {
+		$user_id = $user_email = $user_firstname = $user_lastname = $user_phonenumber = $user_bio = $user_skills = $user_dob = $user_profession = $user_gender = $user_maritalstatus = $user_address = $user_city = $user_joindate = $user_country = "N/A";	
 	}
 
-	//get gender name from gender table using gender id from user table
-	$sql = "SELECT gender_name FROM gender WHERE gender_id = '$user_gender' ";
-	$res = $conn->query($sql);
-	if($res->num_rows>0){
-		while($row = $res->fetch_assoc()){
-			$user_gender = $row['gender_name'];	
-		}
-	}
 	$conn->close();
 ?>

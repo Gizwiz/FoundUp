@@ -25,43 +25,68 @@
 
 ?>
 	<script type="text/javascript">
-		function checkBackspace(event){
-			if(event.keyCode === 8){
-				$("#searchProfession").val("%");
-				suggestMatch();	
-			}
-		}
 		
-		function resetProfessionId(){
-			console.log("haloo");
-			$("#searchProfession").val("%");
-			suggestMatch();	
-		}
-		
-		function suggestMatch(){
-				console.log();
-				$(document).ready(function(){
+					$(document).ready(function(){
+						console.log("ANIMA");
+
 					var searchFname=$("#searchFname").val();
 					var searchLname=$("#searchLname").val();
 					var searchField=$("#searchField").val();
 					var searchProfession=$("#searchProfession").val();
 					var searchCountry=$("#searchCountry").val();
-					console.log(searchField+":"+searchProfession);
 					$.ajax({
 						type: "post",
 						url: "../../components/getSearchResults.php",
 						data: "fname="+searchFname+"&lname="+searchLname+"&field="+searchField+"&profession="+searchProfession+"&country="+searchCountry,
 						success:function(data){
 							$("#suggestionResults").html(data);
-							/*$("#suggestionResults").find("div").each(function(index){
-								$(this).delay(125*index).fadeIn(400);
-							});*/
+						$(".btn-searchCustom").each(function(index){
+							$(this).delay(175*index).fadeIn(600);
+							});
 
 						}
 					});
 				});
-			
 		
+		function checkBackspace(event){
+			if(event.keyCode === 8){
+				//$("#searchProfession").val("%");
+				suggestMatch();	
+			}
+		}
+		
+		function fadeButtonsOut(){
+			$(".btn-searchCustom").each(function(){
+				$(this).fadeOut(0);
+			});
+		}
+		
+		function fadeButtonsIn(){
+			$(".btn-searchCustom").each(function(index){
+				$(this).delay(175*index).fadeIn(1000);
+			});
+
+		}
+		function suggestMatch(){
+
+				$(document).ready(function(){
+					var searchFname=$("#searchFname").val();
+					var searchLname=$("#searchLname").val();
+					var searchField=$("#searchField").val();
+					var searchProfession=$("#searchProfession").val();
+					var searchCountry=$("#searchCountry").val();
+					var count = 0;
+					$.ajax({
+						type: "post",
+						url: "../../components/getSearchResults.php",
+						data: "fname="+searchFname+"&lname="+searchLname+"&field="+searchField+"&profession="+searchProfession+"&country="+searchCountry,
+						success:function(data){
+							$("#suggestionResults").html(data);
+							fadeButtonsIn();
+						}
+					});
+				});
+
 		}
 		
 	
@@ -72,11 +97,9 @@
 
 		<div class="row" id="searchPills">
 
-
-
 			<div class="col-md-12">
 				<br>
-				<ul class="nav nav-pills nav-justified">
+				<ul class="nav nav-pills nav-justified dark">
 					<li class="<?php echo $userSearchActive ?>"><a data-toggle="pill" href="#searchForUser">People</a></li>
 					<li class="<?php echo $companySearchActive ?>"><a data-toggle="pill" href="#searchForCompany">StartUps</a></li>
 				</ul>
@@ -87,8 +110,8 @@
 						<br>
 						<div class="row">
 						<div class="col-xs-4">
-							First name:<input type="text" id="searchFname" onkeyup="resetProfessionId()" onkeydown="checkBackspace(event)" >
-							Last name:<input type="text" id="searchLname" onkeyup="resetProfessionId()" onkeydown="checkBackspace(event)" >
+							First name:<input type="text" id="searchFname" onkeyup="suggestMatch()" onkeydown="checkBackspace(event)" >
+							Last name:<input type="text" id="searchLname" onkeyup="suggestMatch()" onkeydown="checkBackspace(event)" >
 						</div>
 						<div class="col-xs-4">
 							Field:
@@ -111,7 +134,7 @@
 							</script>
 
 							<form>
-								<select name="searchField" id="searchField" onchange="resetProfessionId()">
+								<select name="searchField" id="searchField" onchange="suggestMatch()">
 									<option>--Select professional field--</option>
 									<?php 
 										include '../../database/userdbconnect.php';
@@ -143,7 +166,9 @@
 						<br>
 						<div class="row">
 							<div class="col-lg-12">
-								<div id="suggestionResults" class="pre-scrollable"></div>
+								<div id="suggestionResults" class="pre-scrollable">
+								
+								</div>
 							</div>
 						</div>
 					</div> <!-- END USER SEARCH PILL -->

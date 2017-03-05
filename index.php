@@ -86,14 +86,14 @@
 		<div class="row" style="text-align: center;" id="frontRegister">
 			<div class="col-xs-6" class="select">
 				<h2>Worker</h2>
-				<img src="resources/images/person.jpg" alt="Worker" > <br>
+				<img src="resources/images/person.jpg" alt="Worker" /> <br>
 				<h2> Looking for a StartUp </h2>
 				<button type="button" class="btn btn-default">Search</button>
 			</div>
 		
 			<div class="col-xs-6" class="select">
 				<h2>StartUp</h2>
-				<img src="resources/images/startup.jpg" alt="StartUp" > <br>
+				<img src="resources/images/startup.jpg" alt="StartUp" /> <br>
 				<h2> Looking for people </h2>
 				<button type="button" class="btn btn-default">Search</button>
 			</div>

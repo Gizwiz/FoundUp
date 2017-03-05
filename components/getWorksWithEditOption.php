@@ -66,9 +66,7 @@ $sql = "
 			<br>
 			<button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#editWorkModal">EDIT</button>
 			&nbsp;&nbsp;&nbsp;
-
 			<button id='.$id.'" type="button" onclick="setId('.$id.')" class="btn btn-default btn-lg" data-toggle="modal" data-target="#confirmWorkDeletionModal">DELETE</button>
-
 			<h3>'.$work_title.'<i>'.$work_time_combine.'</i></h3><p>'.$work_description.'</p><a href="'.$work_url.'">'.$work_url.'</a><br><br></div>';
 			
 		}
