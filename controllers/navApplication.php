@@ -13,18 +13,25 @@
                  <a class="navbar-brand" href="../../application/user/userFrontpage.php?user=<?php echo $_SESSION['user_username']; ?>" id="logo">
 					FoundUp
 				 </a> 
+				 <!-- Shows user avatar and name next to logo
+						
+				 <p>&emsp;</p>
 				<?php include '../../components/getImage.php' ?>
 				<img src="<?php echo $user_avatar ?>" alt="userImage"></img>
 
 				<?php 
-					echo '<p>'.$user_firstname.' '.$user_lastname.'</p>';
+					echo ' <p> &nbsp; '.$user_firstname.' '.$user_lastname.'</p>';
 				?>
+					-->
              </div> 
              <!-- Collect the nav links, forms, and other content for toggling --> 
-             <div class="collapse navbar-collapse" id="navLinks"> 
+             <div class="collapse navbar-collapse" id="navLinks" > 
                  <ul class="nav navbar-nav navbar-right"> 
 					 <li>
 						<a href="../../application/user/userFrontpage.php?user=<?php echo $_SESSION['user_username']; ?>">Front Page</a>
+					 </li>
+					 <li>
+						<a href="../../application/shared/search.php">Search</a>
 					 </li>
 					 <li>
 						<a href="../../application/user/myProfile.php?user=<?php echo $_SESSION['user_username']; ?>">My Profile</a>

@@ -163,7 +163,7 @@
 									<div class="caption">
 										<h4><?php echo $suggestedCompany[9] ?></h4>
 										<p>INFO HERE</p>
-										<a class="btnbtn-default" href="#">>> View</a>
+										<a class="btn btn-default" href="#">>> View</a>
 									</div>
 								</div>
 							</li>

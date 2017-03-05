@@ -206,14 +206,14 @@
 						<span><?php echo $errmsg; ?></span>
 					</div><br>
 					
-					<input type="text" class="form-control" name="user_firstname" value="<?php echo $user_firstname;?>" placeholder="First Name" style="<?php echo $fname_css; ?>" autofocus required><br>
-					<input type="text" class="form-control" name="user_lastname" value="<?php echo $user_lastname;?>"  style="<?php echo $lname_css; ?>" placeholder="Last Name" required><br>
-					<input type="text" class="form-control" id="email" name="user_email" value="<?php echo $user_email;?>"  style="<?php echo $email_css; ?>" placeholder="Email" required><br>
+					<input type="text" class="form-control" name="user_firstname" value="<?php echo $user_firstname;?>" placeholder="First Name" style="<?php echo $fname_css; ?>" autofocus required/><br>
+					<input type="text" class="form-control" name="user_lastname" value="<?php echo $user_lastname;?>"  style="<?php echo $lname_css; ?>" placeholder="Last Name" required/><br>
+					<input type="text" class="form-control" id="email" name="user_email" value="<?php echo $user_email;?>"  style="<?php echo $email_css; ?>" placeholder="Email" required/><br>
 					<!--<input type="text" class="form-control" name="user_phonenumber" value="<?php echo $user_phonenumber;?>"  style="<?php echo $phone_css; ?>" placeholder="Phone number" required><br>-->
-					<input type="password" class="form-control" name="user_password" value="<?php echo $user_password;?>"  style="<?php echo $pw_css; ?>" placeholder="Password" required><br>
-					<input type="password" class="form-control" name="user_confirmpassword" value="<?php echo $user_confirmpassword;?>"  style="<?php echo $pw_css; ?>" placeholder="Confirm Password" required><br>
+					<input type="password" class="form-control" name="user_password" value="<?php echo $user_password;?>"  style="<?php echo $pw_css; ?>" placeholder="Password" required/><br>
+					<input type="password" class="form-control" name="user_confirmpassword" value="<?php echo $user_confirmpassword;?>"  style="<?php echo $pw_css; ?>" placeholder="Confirm Password" required/><br>
 					
-					<input type="submit" class="registerButton" name="regButton" value="Register">
+					<input type="submit" class="registerButton" name="regButton" value="Register"/>
 					
 				</form>
 				
