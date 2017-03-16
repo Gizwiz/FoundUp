@@ -39,7 +39,9 @@ $sql = "
 $res = $conn->query($sql);
 
 if($res->num_rows>0){
+
 	while($row = $res->fetch_assoc()){
+        
 		$user_id = $row['user_id'];
 		$user_email = $row['user_contact_email'];	
 		$user_firstname= $row['user_firstname'];
@@ -58,9 +60,12 @@ if($res->num_rows>0){
 		$user_country= $row['country_name'];
 
 	}
-} else {
-		$user_id = $user_email = $user_firstname = $user_lastname = $user_phonenumber = $user_bio = $user_skills = $user_dob = $user_profession = $user_gender = $user_maritalstatus = $user_address = $user_city = $user_joindate = $user_country = "N/A";	
+}
+
+
+else {
+        echo "<br><br><br>no". $_SESSION['user_username'];
+		$user_id = $user_email = $user_firstname = $user_lastname = $user_phonenumber = $user_bio = $user_skills = $user_dob = $user_profession = $user_gender = $user_maritalstatus = $user_address = $user_city = $user_joindate = $user_country = "N/A";
 	}
 
-	$conn->close();
 ?>
