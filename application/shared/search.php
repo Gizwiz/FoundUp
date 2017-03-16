@@ -26,28 +26,28 @@
 ?>
 	<script type="text/javascript">
 		
-					$(document).ready(function(){
-						console.log("ANIMA");
+        $(document).ready(function(){
+                console.log("ANIMA");
 
-					var searchFname=$("#searchFname").val();
-					var searchLname=$("#searchLname").val();
-					var searchField=$("#searchField").val();
-					var searchProfession=$("#searchProfession").val();
-					var searchCountry=$("#searchCountry").val();
-					$.ajax({
-						type: "post",
-						url: "../../components/getSearchResults.php",
-						data: "fname="+searchFname+"&lname="+searchLname+"&field="+searchField+"&profession="+searchProfession+"&country="+searchCountry,
-						success:function(data){
-							$("#suggestionResults").html(data);
-						$(".btn-searchCustom").each(function(index){
-							$(this).delay(175*index).fadeIn(600);
-							});
+            var searchFname=$("#searchFname").val();
+            var searchLname=$("#searchLname").val();
+            var searchField=$("#searchField").val();
+            var searchProfession=$("#searchProfession").val();
+            var searchCountry=$("#searchCountry").val();
+            $.ajax({
+                type: "post",
+                url: "../../components/getSearchResults.php",
+                data: "fname="+searchFname+"&lname="+searchLname+"&field="+searchField+"&profession="+searchProfession+"&country="+searchCountry,
+                success:function(data){
+                    $("#suggestionResults").html(data);
+                $(".btn-searchCustom").each(function(index){
+                    $(this).delay(175*index).fadeIn(600);
+                    });
 
-						}
-					});
-				});
-		
+                }
+            });
+        });
+
 		function checkBackspace(event){
 			if(event.keyCode === 8){
 				//$("#searchProfession").val("%");
@@ -93,7 +93,7 @@
 	</script>
 	
 	<!-- pills -->
-	<div class="container" style="margin-top: 3%">
+	<div class="container" style="margin-top:3%;">
 
 		<div class="row" id="searchPills">
 
@@ -101,7 +101,7 @@
 				<br>
 				<ul class="nav nav-pills nav-justified dark">
 					<li class="<?php echo $userSearchActive ?>"><a data-toggle="pill" href="#searchForUser">People</a></li>
-					<li class="<?php echo $companySearchActive ?>"><a data-toggle="pill" href="#searchForCompany">StartUps</a></li>
+					<li class="<?php echo $companySearchActive ?>"><a data-toggle="pill" href="#searchForCompany">Startups</a></li>
 				</ul>
 
 				<div class="tab-content">
@@ -166,7 +166,7 @@
 						<br>
 						<div class="row">
 							<div class="col-lg-12">
-								<div id="suggestionResults" class="pre-scrollable">
+								<div id="suggestionResults">
 								
 								</div>
 							</div>

@@ -18,7 +18,7 @@
 		<div class="row" id="frontPageSearch">
 		
 			<div class="col-xs-3"></div>
-			<div class="col-xs-6"><h1>Start Searching For a Team</h1></div>
+			<div class="col-xs-6"><h1>Build Your StartUp Team </h1></div>
 			<div class="col-xs-3"></div>
 			
 		</div>
@@ -27,11 +27,11 @@
 		
 			<div class="col-xs-3"></div>
 			<div class="col-xs-3">
-				<h2>Search for Talented People</h2>
+				<h2>Find Talent</h2>
 				<img src="../../resources/images/person.jpg" alt="Worker" /> <br>
 			</div>
 			<div class="col-xs-3">
-				<h2>Search for StartUps</h2>
+				<h2>Find Ideas</h2>
 				<img src="../../resources/images/startup.jpg" alt="Worker" /> <br>
 			</div>
 			<div class="col-xs-3"></div>

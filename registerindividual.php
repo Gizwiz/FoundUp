@@ -50,9 +50,9 @@
 					
 					/*LNAME*/
 					if (!preg_match("/^[a-zA-ZåäöÅÄÖ ]*$/", $user_lastname)) {
-						if(!$fnameErr){
+						
 						$errmsg = $errmsg . "<br>Only letters and white space allowed."; 
-						}
+						$errmsg = $errmsg . "<br>Only letters and white space allowed."; 
 						$lname_css =  $error_css;
 						$lname_error = true;
 					} else {
@@ -62,7 +62,7 @@
 
 					/*EMAIL*/
 					if(!filter_var($user_email, FILTER_VALIDATE_EMAIL)){
-						$errmsg = $errmsg . "<br> Invalid Email format. Must be of \'example@example.com\'.";
+						$errmsg = $errmsg . "<br> Invalid Email format. Must be like 'example@example.com'.";
 						$email_css = $error_css;
 						$email_error = true;
 					} else {
@@ -83,7 +83,7 @@
 					
 					} else {
 						//password hasing
-						$user_password = password_hash($user_password, PASSWORD_DEFAULT);
+						$user__hashed_password = password_hash($user_password, PASSWORD_DEFAULT);
 						$pw_css = $okay_css;
 						$pw_error = false;
 					}
@@ -146,38 +146,64 @@
 								}
 							//if nothing found push info into the database and create account							
 							if(!$error){
-							$sql = "
-								INSERT INTO user (
-									user_firstname,
-									user_lastname,
-									user_email,
-									user_contact_email,
-									user_phonenumber,
-									user_password,
-									user_username,
-									user_avatar,
-									user_country,
-									user_joindate
+                                $sql = "
+                                    INSERT INTO user (
+                                        user_firstname,
+                                        user_lastname,
+                                        user_email,
+                                        user_contact_email,
+                                        user_phonenumber,
+                                        user_password,
+                                        user_username,
+                                        user_avatar,
+                                        user_country,
+                                        user_joindate,
+                                        user_profession,
+                                        user_gender
 
-								)
-								VALUES (
-									'$user_firstname',
-									'$user_lastname',
-									'$user_email',
-									'$user_email',
-									'$user_phonenumber',
-									'$user_password',
-									'$user_username',
-									'../../resources/userAvatars/person.jpg',
-									'1',
-									CURRENT_TIMESTAMP
+                                    )
+                                    VALUES (
+                                        '$user_firstname',
+                                        '$user_lastname',
+                                        '$user_email',
+                                        '$user_email',
+                                        '$user_phonenumber',
+                                        '$user_hashed_password',
+                                        '$user_username',
+                                        '../../resources/userAvatars/person.jpg',
+                                        1,
+                                        CURRENT_TIMESTAMP,
+                                        1,
+                                        1
 
-								)
-							";
-							session_start();
-							mysqli_query($conn,$sql) or die(mysqli_error($conn));
-							$_SESSION['user_username'] = $user_username;
-							header('Location: application/user/userFrontpage.php?user_username='.$user_username);
+                                    )
+                                ";
+                                session_start();
+                                mysqli_query($conn,$sql) or die(mysqli_error($conn));
+                                
+                                $_SESSION['user_username'] = $user_username;
+                                
+                                                                
+                                $sql = "
+                                    SELECT user_id FROM user WHERE user_username = '$user_username'                                
+                                ";
+                                $res = $conn->query($sql);
+
+                                if($res->num_rows>0){
+                                    while($row = $res->fetch_assoc()){
+                                        $user_id = $row['user_id'];
+                                    }   
+                                }
+                                
+                                $sql = "
+                                    INSERT INTO mailbox (
+                                        user_id,
+                                    ) VALUES (
+                                        '$user_id'
+                                    )
+                                ";
+                                mysqli_query($conn,$sql) or die(mysqli_error($conn));
+                                header('Location: application/user/userFrontpage.php?user_username='.$user_username);
 							}
 							
 						

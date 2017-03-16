@@ -3,9 +3,10 @@
 body {
 
   font-family: 'Open Sans', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   color: #333333;
-  /*background-color: white;*/
+  background-color: #f7f7f7;
+    
 }
 
 h1,
@@ -27,6 +28,9 @@ p{
 	text-align: center;
 	margin-top:4%;
 	color: #4692dd;
+}
+#frontPageSearchInformation{
+    margin-top: 2%;
 }
 
 #frontPageSearchInformation img{
@@ -240,10 +244,10 @@ li{
 	border-top: 1px solid black;
 }
 .btn-default{
-	border: 1px solid #4692dd;
+	border: 1px solid #000000;
 }
 .btn-default:hover{
-	border: 1px solid #4692dd;
+	border: 1px solid #000000;
 }
 
 .btn-info{
@@ -281,6 +285,154 @@ li{
 	width: 10vw;
 }
 
+/*INBOX // MESSAGE */
+/*
+.section > div{
+    display: none;
+}
+.section >div:target{
+    display: block;
+}*/
+
+#inboxPageBody{
+    background-color: #e5e5e5;
+}
+
+#inboxUimg{
+    width:4em;
+    height:4em;
+    display: inline-block;
+}
+
+#inboxComposeButton{
+    
+    text-align: center;
+    background-color: dodgerblue;
+    border-radius: 10px 10px 10px 10px;
+    border-style: none;
+    font-size: 26px;
+    color:white;
+    width: 25%;
+    margin: 3%;
+    display: inline-block;
+}
+
+#inboxSide .active{
+    color:red;
+    border-left: 15px solid dodgerblue;
+}
+
+#inboxSide a{
+    margin-left: 10%;
+    color: black;
+}
+
+#inboxSide a:hover{
+    text-decoration: none;
+}
+
+#inboxHeader{
+    background-color: #ffffff;
+    margin: 5%;
+    margin-bottom: -5%;
+}
+
+#inboxBody{
+   background-color: #ffffff; 
+    margin:5%;
+    text-align: center;
+}
+/*compose*/
+#composeMessage{
+    text-align: center;
+}
+
+#receiverslist .receiverTag{
+    background-color: #ccd9ff;
+    width: 30%;
+    display: inline-block;
+    padding: 5px;
+    margin: 1%;
+}
+
+#receiver{
+    margin-bottom:0%;
+    margin: auto;
+    width:75%;
+    display: inline-block;
+}
+
+#subj{
+    width:80%;
+    margin-left: 1%;
+    margin-right:1%;
+}
+
+.smallcheck{
+    color:green;
+    position:relative;
+    display:inline-block;
+    top:-2px; 
+    padding:5px;
+    float:right;
+}
+
+.smallcross{
+    position: relative;
+    display: inline-block;
+    top: -1px;
+    padding 1px;
+    border: 1px solid black;
+}
+
+#composeMessage textarea{
+    width:100%;
+    height: 55vh;
+    border: 1px solid #888;
+    outline: none;
+    resize: none;
+}
+
+/*messages*/
+#messages{
+    text-align: left;
+}
+
+#messagesTopBar{
+    font-size: 22px;
+    margin: 2%;
+    margin-top:-1%;
+}
+
+.messageRow{
+    text-align:left; 
+    border-bottom: 1px solid #cecece;
+    height:4vh;
+}
+
+#messages img{
+    width: 2em;
+    height: 2em;
+    margin-right: 5%;
+    display: inline-block;
+}
+
+#messages .messageRow:hover{
+    background-color:#dfdfdf;
+}
+
+#messages p{
+    display: inline-block;
+}
+#messageContentModal .modal-footer{
+    margin-bottom: -2%;
+}
+
+#messageContentModal input{
+    display: inline-block;
+    width: 25vh;
+}
+
 /*SEARCH*/
 
 #searchPills input{
@@ -293,8 +445,6 @@ li{
 	display:block;
 	margin-bottom: -3%;
 }
-
-
 
 
 .searchAvatar{
@@ -312,18 +462,22 @@ li{
 
 .btn-searchCustom{
 	width:100%;
-	border: 1px solid black;
+	border-bottom: 1px solid #dfdfdf;
 	height: 26vh;
 }
 
 
+#suggestionResults{
+    margin-left: 1px solid black;
+    margin-right: 1px solid black;
 
+}
 #suggestionResults div{
 	height: 10vh;
 }
 
 #suggestionResults p{
-	margin-top: 4%;
+	margin-top: 3%;
 
 }
 
@@ -343,13 +497,10 @@ li{
 	background-color:#c6c6c6;
 }
 
-.btn-searchCustom div:focus{
-	background-color: red !important;
-}
-
 .nav-pills > li > a{
 	color:black;	
 } 
+
 .nav-pills > li.active > a, .nav-pills > li.active > a:focus {
 	color: #FFFFFF;
 	background-color: #4692dd;
@@ -386,9 +537,7 @@ li{
 }
 
 .navbar .collapse{
-
 	margin-right: 2em;
-	
 }
 
 #navLinks> li:hover{
@@ -399,7 +548,8 @@ li{
 
 .navbar-custom {
   position: fixed;
-  background-color: #4a4c4c !important;
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid #dfdfdf!important;
   top: 0;
   left: 0;
   width: 100%;
@@ -411,6 +561,7 @@ li{
   	font-weight: 800;
 	font-size: 22px;
 	color: #007fff !important;
+    
 }
 .navbar-custom .navbar-header .navbar-toggle {
 	
@@ -423,7 +574,7 @@ li{
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 1px;
-	color: white !important;
+	color: black !important;
 }
 
 .navbar-custom .nav li a:hover{

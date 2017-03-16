@@ -140,7 +140,7 @@ if($fname === "%" and $lname === "%" and $fieldName === "%" and $professionName 
 			$profurl = '../../application/shared/profile.php?user='.$row['user_username'];
 
 			echo "
-				<div class='btn-searchCustom col-xs-12' style='margin-bottom:1%;height: 6em;'>
+				<div class='btn-searchCustom col-xs-12' style='height:6em;background-color:white;'>
 				<div id='".$row['user_id']."' onclick='getPreviewProfile(this.id)' data-toggle='modal' data-target='#previewUserProfile' class='animFade'>
 				<div class='col-xs-2'><img class='searchAvatar' src='".$row['user_avatar']."'></div>
 				<div class='col-xs-5'><p>".$row['user_firstname']." ".$row['user_lastname']."<br>".$row['user_city']." ".$row['country_name']. "</p></div>

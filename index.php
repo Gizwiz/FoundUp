@@ -6,11 +6,11 @@
 <?php include 'controllers/navFrontEnd.php'; ?>
 	
     <!-- Page Header --> 
-     <header class="intro-header" style="background-image: url(resources/images/mainBackground2.jpg)">
+     <header class="intro-header" style="background-color: white">
 	 <!--style="background-image: url(resources/images/mainBackground2.jpg);--> 
          <div class="container-fluid"> 
              <div class="row"> 
-				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"> 
+				<div class="col-md-8"> 
 				<!-- Carousel -->
 					 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
 						<!-- Indicators -->
@@ -23,25 +23,25 @@
 						  <div class="carousel-inner" role="listbox" style="width:100%">
 						  
 							<div class="item active site-heading"> 
-									<h1 id="headerText">FoundUp</h1> 
+									<h1 class="headerText">FoundUp</h1> 
 									 <!--<hr class="small">-->
-									<span class="subheading" id="subheaderText">Find talented people for your StartUp</span>
+									<span class="subheaderText">Find talented people for your StartUp</span>
 							</div>	
 						
 							<div class="item site-heading"> 
-								 <h1 id="headerText">Make it easy </h1> 
+								 <h1 class="headerText">Make it easy </h1> 
 									 <!--<hr class="small">-->
-								<span class="subheading" id="subheaderText">StartUp with FoundUp</span>
+								<span class="subheaderText">StartUp with FoundUp</span>
 							</div>
 							
 							<div class="item site-heading"> 
-								 <h1 id="headerText">Find a team</h1> 
+								 <h1 class="headerText">Find a team</h1> 
 									 <!--<hr class="small">-->
-								<span class="subheading" id="subheaderText">Build your dream StartUp team</span>
+								<span class="subheaderText">Build your dream StartUp team</span>
 							</div>
 							
 						</div> 
-                 </div> 
+                 </div>
 				 
 		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -53,14 +53,25 @@
 		</a>
 				 
              </div> 
+                 
+            <div class="col-md-4" id="frontPageLogin">
+                <h2>Sign In</h2>
+                <form name="loginform" action="components/login_authentication.php" method="post">
+					<input type="text" class="form-control" name="email" placeholder="Email" required></input>
+					<input type="password" class="form-control" name="password" placeholder="Password" required></input>
+					<input type="submit" class="form-control" name="submitLogin" value="Log in"></input>
+                    <a href="registerindividual.php">or register</a><br>
+				</form>    
+             </div>
+
          </div> 
          </div>
  </header> 
 	 
-	 <div class="container">
+	 <div class="container" id="sec">
 	 
 	 
-		<div class="row" id="valuePropositions">
+		<div class="row" id="infoImages">
 			<div class="col-sm-4">
 				<h2> SAVE MONEY </h2>
 				<h2> <br><br>IMAGE GOES HERE<br><br></h2>

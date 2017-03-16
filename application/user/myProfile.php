@@ -8,7 +8,7 @@
 <body>
 	
 	<?php include '../../controllers/navApplication.php'; ?>
-
+        
 		<div class="container-fluid">
 		
 		<div class="row" id="myInfo">
@@ -17,7 +17,7 @@
 				<!-- Get and display user avatar image -->
 
 
-				<?php include '../../components/getImage.php' ?>
+				<?php include '../../components/getImage.php';?>
 				<img src="<?php echo $user_avatar; ?>" alt="<?php echo $user_avatar; ?>" class="uImg">
 				<br>
 

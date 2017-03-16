@@ -4,6 +4,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   color: #333333;
+        background-color: #ededed;
   /*background-color: white;*/
 }
 
@@ -24,9 +25,9 @@ footer{
 }
 
 
-#headerText{
-	color:white;
-	
+.headerText{
+	color:dodgerblue;
+    text-align: center;
 }
 
 #subheaderTextBackground{
@@ -35,10 +36,10 @@ footer{
 	
 }
 
-#subheaderText{
+.subheaderText{
 
 	margin-top: 5%;
-	color:white; 
+	color:#5186ff; 
 	padding-top: 5%;
 	padding-bottom: 5%;
 	
@@ -46,6 +47,30 @@ footer{
 
 #headerTopWhitespace{
 	margin-top:100%;
+}
+
+#frontPageLogin{
+    width:25%;
+    margin-top: 7%;
+    margin-right: 5%;
+    text-align: center;
+    border: 1px solid #afafaf;
+    background-color: #e8e8e8;
+}
+
+#frontPageLogin form{
+    margin-top: 5%;
+}
+
+#frontPageLogin input{
+    width:70%;
+    margin-left: 15%;
+    margin-right: 5%;
+    margin-top: 1%;
+}
+
+#frontPageLogin a:hover{
+    text-decoration: none;
 }
 
 #frontRegister img{
@@ -75,7 +100,11 @@ footer{
 	width:75%;
 }
 
-#valuePropositions .col-sm-4{
+#sec{
+
+}
+
+#infoImages .col-sm-4{
 	border-style: solid;
 	text-align: center;
 	padding: 2%;
@@ -92,9 +121,23 @@ footer{
 
 /*Carousel*/
 
+#myCarousel{
+    height:45%;
+}
 
 .carousel-control.left, .carousel-control.right {
     background-image: none;
+    color:black;
+}
+
+.carousel-indicators{
+    margin-top: -5%;
+}
+.carousel-indicators li{
+    background-color: #bcbcbc;
+}
+.carousel-indicators .active{
+    background-color:black;
 }
 
 /*Registration*/
@@ -227,15 +270,12 @@ footer{
 	margin-top: 1%;
 	margin-bottom: 1%;
 }
-
 .navbar-header p{
 	display: inline-block;
 }
 
 .navbar .collapse{
-
 	margin-right: 2em;
-	
 }
 
 #navLinks> li:hover{
@@ -246,7 +286,12 @@ footer{
 
 .navbar-custom {
   position: fixed;
+  background-color: #FFFFFF !important;
+    border-bottom: 1px solid !important;
+  top: 0;
+  left: 0;
   width: 100%;
+  z-index: 3;
   font-family: 'Open Sans', sans-serif;
 
 }
@@ -254,9 +299,10 @@ footer{
   	font-weight: 800;
 	font-size: 22px;
 	color: #007fff !important;
+    
 }
 .navbar-custom .navbar-header .navbar-toggle {
- 	background-color: #4a4c4c;
+	
   font-weight: 800;
   text-transform: uppercase;
   font-size: 12px;
@@ -266,19 +312,11 @@ footer{
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 1px;
-	color: white !important;
+	color: black !important;
 }
 
 .navbar-custom .nav li a:hover{
 	color:#939393 !important;
-}
-
-.navbar {
-  background-color: #4a4c4c;
-	  border:none;
-	  box-shadow: none;
-}
-
 }
 
 @media only screen and (min-width: 768px) {
@@ -364,6 +402,7 @@ footer{
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+    border-bottom: 1px solid darkgrey;
     
 }
 .intro-header .site-heading,
