@@ -12,7 +12,7 @@ $user_username = $_SESSION['user_username'];
 //profession 
 if(isset($_POST["user_profession"])){
 	$user_profession = clean_input($_POST['user_profession']);
-	$sql = "UPDATE user SET user_profession='$user_profession' WHERE user_username = '$user_username'";
+	$sql = "UPDATE users SET user_profession='$user_profession' WHERE user_username = '$user_username'";
 	if ($conn->query($sql) === TRUE) {
 		echo "profession updated successfully";
 	} else {
@@ -37,7 +37,7 @@ if(isset($_POST["submitNewContactInfo"])){
 	} else {
 
 		$sql = "
-			UPDATE user SET user_contact_email='$user_email' WHERE user_username = '$user_username'
+			UPDATE users SET user_contact_email='$user_email' WHERE user_username = '$user_username'
 		";
 
 		if ($conn->query($sql) === TRUE) {
@@ -52,7 +52,7 @@ if(isset($_POST["submitNewContactInfo"])){
 		echo "phone number error";	
 	} else {
 		$sql = "
-			UPDATE user SET user_phonenumber='$user_phonenumber' WHERE user_username = '$user_username'
+			UPDATE users SET user_phonenumber='$user_phonenumber' WHERE user_username = '$user_username'
 		";
 
 		if ($conn->query($sql) === TRUE) {
@@ -63,7 +63,7 @@ if(isset($_POST["submitNewContactInfo"])){
 	}
 
 	//address
-	$sql = "UPDATE user SET user_address='$user_address' WHERE user_username = '$user_username'
+	$sql = "UPDATE users SET user_address='$user_address' WHERE user_username = '$user_username'
 	";
 	if ($conn->query($sql) === TRUE) {
 		echo "Address updated successfully";
@@ -72,7 +72,7 @@ if(isset($_POST["submitNewContactInfo"])){
 	} 
 
 	//city
-	$sql = "UPDATE user SET user_city='$user_city' WHERE user_username = '$user_username'
+	$sql = "UPDATE users SET user_city='$user_city' WHERE user_username = '$user_username'
 	";
 	if ($conn->query($sql) === TRUE) {
 		echo "City updated successfully";
@@ -81,7 +81,7 @@ if(isset($_POST["submitNewContactInfo"])){
 	} 
 
 	//country
-	$sql = "UPDATE user SET user_country='$user_country' WHERE user_username = '$user_username'
+	$sql = "UPDATE users SET user_country='$user_country' WHERE user_username = '$user_username'
 	";	
 
 	if ($conn->query($sql) === TRUE) {
@@ -97,7 +97,7 @@ if(isset($_POST['submitNewBasicInformation'])){
 	
 	//Date of birth
 	$sql ="
-		UPDATE user SET user_dob='$user_dob' WHERE user_username='$user_username'
+		UPDATE users SET user_dob='$user_dob' WHERE user_username='$user_username'
 	";
 	if ($conn->query($sql) === TRUE) {
 		echo "Date of Birth updated successfully";
@@ -106,7 +106,7 @@ if(isset($_POST['submitNewBasicInformation'])){
 	}
 	//gender
 	$sql = "
-		UPDATE user set user_gender='$user_gender' WHERE user_username='$user_username'
+		UPDATE users set user_gender='$user_gender' WHERE user_username='$user_username'
 	";
 		if ($conn->query($sql) === TRUE) {
 		echo "Gender updated successfully";

@@ -19,19 +19,19 @@ require '../../components/session-check.php';
 
 	$sql = "
 	SELECT
-		user.user_id,
-		user.user_contact_email,
-		user.user_firstname,
-		user.user_lastname,
-		user.user_username,
-		user.user_phonenumber,
-		user.user_avatar,
-		user.user_skills,
-		user.user_dob,
-		user.user_profession,
-		user.user_city,
-		user.user_joindate,
-		user.user_country,
+		users.user_id,
+		users.user_contact_email,
+		users.user_firstname,
+		users.user_lastname,
+		users.user_username,
+		users.user_phonenumber,
+		users.user_avatar,
+		users.user_skills,
+		users.user_dob,
+		users.user_profession,
+		users.user_city,
+		users.user_joindate,
+		users.user_country,
 		profession.profession_id,
 		profession.profession_name,
 		profession.profession_field_id,
@@ -39,14 +39,14 @@ require '../../components/session-check.php';
 		field.field_name,
 		country.country_id,
 		country.country_name
-	FROM user
+	FROM users
 	INNER JOIN profession
-	ON user.user_profession=profession.profession_id
+	ON users.user_profession=profession.profession_id
 	INNER JOIN field
 	ON profession.profession_field_id=field.field_id
 	INNER JOIN country
-	ON user.user_country=country.country_id
-	WHERE user.user_id = '$id'
+	ON users.user_country=country.country_id
+	WHERE users.user_id = '$id'
 		";
 
 	$res = $conn->query($sql);

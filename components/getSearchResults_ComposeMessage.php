@@ -1,4 +1,7 @@
 <?php
+#
+#Ajax from myInbox.php
+#
 if(!file_exists('../../components/authentication.php')){
 require '../components/authentication.php';
 } else {
@@ -27,7 +30,7 @@ if(isset($_POST['name']) && !empty($_POST['name'])){
 }
 $sql = "
 SELECT user_firstname, user_lastname, user_id
-FROM user 
+FROM users
 WHERE (user_firstname LIKE '$strF'
 AND user_lastname LIKE '$strL')
 OR (user_lastname LIKE '$strF')
@@ -39,7 +42,7 @@ $res = $conn->query($sql);
 if ($res->num_rows > 0) {
     // output data of each row
     while($row = $res->fetch_assoc()) {
-    echo "<option label='' id='".$row['user_id']."' value='".$row['user_firstname']." ".$row['user_lastname']."'></option>";
+    echo "<option id='".$row['user_id']."' value='".$row['user_firstname']." ".$row['user_lastname']."'></option>";
     }
 } else {
     echo "0 results";

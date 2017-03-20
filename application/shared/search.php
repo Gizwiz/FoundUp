@@ -27,8 +27,7 @@
 	<script type="text/javascript">
 		
         $(document).ready(function(){
-                console.log("ANIMA");
-
+            //load some search results when document is ready
             var searchFname=$("#searchFname").val();
             var searchLname=$("#searchLname").val();
             var searchField=$("#searchField").val();

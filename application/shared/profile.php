@@ -12,16 +12,16 @@
 $profile_user_email = $profile_user_firstname = $profile_user_lastname = $profile_user_phonenumber = $profile_user_avatar = $profile_user_bio = $profile_user_dob = $profile_user_profession = $profile_user_gender = $profile_user_maritalstatus = $profile_user_address = $profile_user_city = $profile_user_joindate = $profile_user_country = "";
 
 $sql = "
-	SELECT user.user_id, user.user_firstname, user.user_lastname, user.user_username, user.user_contact_email, user.user_phonenumber, user.user_avatar, user.user_profession, user.user_bio, user.user_skills, user.user_dob, user.user_maritalstatus, user.user_address, user.user_country, user.user_city, user.user_joindate, profession.profession_id, profession.profession_field_id, profession.profession_name, field.field_id, field.field_name, country.country_id, country.country_name, gender.gender_id, gender.gender_name
-	FROM user 
+	SELECT users.user_id, users.user_firstname, users.user_lastname, users.user_username, users.user_contact_email, users.user_phonenumber, users.user_avatar, users.user_profession, users.user_bio, users.user_skills, users.user_dob, users.user_maritalstatus, users.user_address, users.user_country, users.user_city, users.user_joindate, profession.profession_id, profession.profession_field_id, profession.profession_name, field.field_id, field.field_name, country.country_id, country.country_name, gender.gender_id, gender.gender_name
+	FROM users
 	INNER JOIN profession 
-	ON user.user_profession=profession.profession_id 
+	ON users.user_profession=profession.profession_id 
 	INNER JOIN field 
 	ON profession.profession_field_id=field.field_id
 	INNER JOIN country
-	ON user.user_country=country.country_id
+	ON users.user_country=country.country_id
 	INNER JOIN gender
-	ON user.user_gender = gender.gender_id
+	ON users.user_gender = gender.gender_id
 	WHERE user_id = '$profile_user_id'
 	";
 	

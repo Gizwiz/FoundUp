@@ -75,15 +75,15 @@ if($res->num_rows>0){
 if($fname === "%" and $lname === "%" and $fieldName === "%" and $professionName === "%" and $countryName === "%"){
 		echo "<h2 style='text-align:center;'> Here's 50 randomly selected talented people. </h2>";
 	$sql =" 
-	SELECT user.user_id, user.user_firstname, user.user_lastname, user.user_username, user.user_avatar, user.user_profession, user.user_country, user.user_city, profession.profession_id, profession.profession_field_id, profession.profession_name, field.field_id, field.field_name, country.country_id, country.country_name
-	FROM user 
+	SELECT users.user_id, users.user_firstname, users.user_lastname, users.user_username, users.user_avatar_small, users.user_profession, users.user_country, users.user_city, profession.profession_id, profession.profession_field_id, profession.profession_name, field.field_id, field.field_name, country.country_id, country.country_name
+	FROM users
 	INNER JOIN profession 
-	ON user.user_profession=profession.profession_id 
+	ON users.user_profession=profession.profession_id 
 	INNER JOIN field 
 	ON profession.profession_field_id=field.field_id
 	INNER JOIN country
-	ON user.user_country=country.country_id
-	WHERE user.user_firstname LIKE '$fname' AND user.user_lastname LIKE '$lname' AND field.field_name LIKE '$fieldName' AND profession.profession_name LIKE '$professionName' AND (country.country_name LIKE '$countryName' OR user.user_country IS NULL)
+	ON users.user_country=country.country_id
+	WHERE users.user_firstname LIKE '$fname' AND users.user_lastname LIKE '$lname' AND field.field_name LIKE '$fieldName' AND profession.profession_name LIKE '$professionName' AND (country.country_name LIKE '$countryName' OR users.user_country IS NULL)
 	ORDER BY RAND() LIMIT $searchLimit
 	";
 
@@ -98,7 +98,7 @@ if($fname === "%" and $lname === "%" and $fieldName === "%" and $professionName 
 			echo "
 				<div class='btn-searchCustom col-xs-12' style='margin-bottom:1%;height: 6em;'>
 				<div id='".$row['user_id']."' onclick='getPreviewProfile(this.id)' data-toggle='modal' data-target='#previewUserProfile' class='animFade'>
-				<div class='col-xs-2'><img class='searchAvatar' src='".$row['user_avatar']."'></div>
+				<div class='col-xs-2'><img class='searchAvatar' src='".$row['user_avatar_small']."'></div>
 				<div class='col-xs-5'><p>".$row['user_firstname']." ".$row['user_lastname']."<br>".$row['user_city']." ".$row['country_name']. "</p></div>
 				<div class='col-xs-4'><p>".$row['profession_name']."</p></div>
 				<div class='col-xs-1'>&nbsp;</div>
@@ -119,16 +119,16 @@ if($fname === "%" and $lname === "%" and $fieldName === "%" and $professionName 
 	
 } else {
 	$sql =" 
-	SELECT user.user_id, user.user_firstname, user.user_lastname, user.user_username, user.user_avatar, user.user_profession, user.user_country, user.user_city, profession.profession_id, profession.profession_field_id, profession.profession_name, field.field_id, field.field_name, country.country_id, country.country_name
-	FROM user 
+	SELECT users.user_id, users.user_firstname, users.user_lastname, users.user_username, users.user_avatar_small, users.user_profession, users.user_country, users.user_city, profession.profession_id, profession.profession_field_id, profession.profession_name, field.field_id, field.field_name, country.country_id, country.country_name
+	FROM users 
 	INNER JOIN profession 
-	ON user.user_profession=profession.profession_id 
+	ON users.user_profession=profession.profession_id 
 	INNER JOIN field 
 	ON profession.profession_field_id=field.field_id
 	INNER JOIN country
-	ON user.user_country=country.country_id
-	WHERE user.user_firstname LIKE '$fname' AND user.user_lastname LIKE '$lname' AND field.field_name LIKE '$fieldName' AND profession.profession_name LIKE '$professionName' AND (country.country_name LIKE '$countryName' OR user.user_country IS NULL)
-	ORDER BY user.user_lastname LIMIT $searchLimit
+	ON users.user_country=country.country_id
+	WHERE users.user_firstname LIKE '$fname' AND users.user_lastname LIKE '$lname' AND field.field_name LIKE '$fieldName' AND profession.profession_name LIKE '$professionName' AND (country.country_name LIKE '$countryName' OR users.user_country IS NULL)
+	ORDER BY users.user_lastname LIMIT $searchLimit
 	";
 
 	$res = $conn->query($sql);
@@ -142,7 +142,7 @@ if($fname === "%" and $lname === "%" and $fieldName === "%" and $professionName 
 			echo "
 				<div class='btn-searchCustom col-xs-12' style='height:6em;background-color:white;'>
 				<div id='".$row['user_id']."' onclick='getPreviewProfile(this.id)' data-toggle='modal' data-target='#previewUserProfile' class='animFade'>
-				<div class='col-xs-2'><img class='searchAvatar' src='".$row['user_avatar']."'></div>
+				<div class='col-xs-2'><img class='searchAvatar' src='".$row['user_avatar_small']."'></div>
 				<div class='col-xs-5'><p>".$row['user_firstname']." ".$row['user_lastname']."<br>".$row['user_city']." ".$row['country_name']. "</p></div>
 				<div class='col-xs-4'><p>".$row['profession_name']."</p></div>
 				<div class='col-xs-1'>&nbsp;</div>

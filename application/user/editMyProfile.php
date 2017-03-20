@@ -18,10 +18,10 @@
 		
 		<div class="row" id="myInfEdit">
 			<div class="col-md-3">
-		
-				<?php include '../../components/getImage.php' ?>
-				<img src="<?=$user_avatar ?>" alt="user_Picture">
-				<h3>Change profile picture</h3>
+	
+				<?php include '../../components/getImage.php' ?><br>
+				<img src="<?=$user_avatar ?>" alt="user_Picture"><br>
+                <h3>Change profile picture</h3>
 				<form action="../../components/upload.php" method="post" enctype="multipart/form-data">
 					<br>
 					<input type="file" name="fileToUpload" id ="fileToUpload">

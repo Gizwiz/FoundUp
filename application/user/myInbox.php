@@ -13,16 +13,9 @@
     <script type="text/javascript">
 
         var receivers = [];
-        function getMessageContent(id){
-            $.ajax({
-				type: "post",
-				url: "../../components/getUserMessageContent.php",
-				data:"id="+id,
-				success:function(data){
-					$("#messageContent").html(data);
-				}
-			});
-        }
+        var receiverIdTitle = "";
+        
+
         
         function suggestReceiver(){
             
@@ -34,7 +27,12 @@
                     data: "name="+searchName,
                     success:function(data){
                         $("#receiverDatalist").html(data);
-                        //console.log( $("#receiverDatalist").html());
+                       $("#receiver").on('input', function(){
+                            //console.log($(this).val()); 
+                            var opt= $('option[value="'+$(this).val()+'"]');
+                            receiverIdTitle = (opt.length ? opt.attr('id') : ' NO OPTION');
+                            //console.log(receiverIdTitle);
+                       });
                     }
                 });
 
@@ -45,17 +43,35 @@
         
         function sendMessage(){
             $(document).ready(function(){
-                var receiver= $("#receiver").val();
+                var receiver= receivers;
+                var jsonString = JSON.stringify(receivers);
+                //user global array receivers. Pass directly to server, handle it there.
                 var subj = $("#subj").val();
                 var msg= $("#msg").val();
+                
+                //validate subject and message fields. break if empty
+                if(subj == "" || subj==" "){
+                    $("#msgErr").show();
+                    $("#msgErr").html("Message was not sent: subject field was empty.<br> <button class='btn btn-xs smallcross' onclick='hideErrMsg()'>&times;</button>");
+                    return;
+                }
+                if(msg == "" || msg==" "){
+                    $("#msgErr").show();
+                    $("#msgErr").html("Message was not sent: message field was empty.<br>  <button class='btn btn-xs smallcross' onclick='hideErrMsg()'>&times;</button>");
+                    return;
+                }
                 $.ajax({
-                    type:"post",
+                    type:"POST",
                     url:"../../components/sendUserMessage.php",
-                    data: "receiver="+receiver+"&subj="+subj+"&msg="+msg,
+                    data: {receivers: receivers, subj: subj, msg: msg},
+                    cache: false,
                     success:function(data){
+                        console.log("success");
                        $("#msgErr").html("");
                        $("#msgErr").show();
                        $("#msgErr").html(data);
+                        
+                        //clear out compose message and promt user with message sent info
                     }
                 });
 
@@ -66,18 +82,40 @@
         function hideErrMsg(){
             $("#msgErr").hide();
         }
-            
+        
+        function setReceiverId(){
 
+        }
+
+
+        
         function checkEnter(){
-           $("#receiversList").append("<div class='receiverTag'> "+$("#receiver").val()+" <button class='btn btn-xs smallcross'>&times;</button></div>");
+
+            
+           $("#receiversList").append("<div title='"+receiverIdTitle+"' class='receiverTag'>"+$("#receiver").val()+"<button class='btn btn-xs smallcross'>&times;</button></div>");
           //  console.log($("#receiver").val());
-            receivers.push($("#receiver").val());
+            receivers.push(receiverIdTitle);
+            $("#receiver").val('');
+            
+            $(".smallcross").on('click', function(){
+                removeReceiverTag($(this).closest("div").attr('title'));                 
+            });
+
+        }
+        
+        function removeReceiverTag(tag){
+           $('div[title="'+tag+'"]').remove();
+            
+            var index = receivers.indexOf(tag);
+            if(index>-1){
+                receivers.splice(index, 1);
+            }
+            
             for(var i=0; i<receivers.length; i++){
                 console.log(receivers[i]);
             }
-            $("#receiver").val('');
-
         }
+        
 
     </script>
     
@@ -106,13 +144,16 @@
                 <!-- MESSAGES -->
                 <div class="tab-content">
                     <div id="messages" class="tab-pane fade in active">
-                            <h1 style="display:inline-block">Messages</h1><button id="inboxComposeButton" data-target="#composeMessageModal" data-toggle="modal">Compose Message</button>
+                        <div class="row">
+                            <h1 style="display:inline-block;">Messages</h1>
+                            <button id="inboxComposeButton" data-target="#composeMessageModal" data-toggle="modal">Compose Message</button>
                             <div class="row" id="messagesTopBar">
-                                <div class="col-xs-1"><h3></h3></div>
+                                <div class="col-xs-1"></div>
                                 <div class="col-xs-3"><h3>From</h3></div>
-                                <div class="col-xs-6"><h3>Subject</h3></div>
-                                <div class="col-xs-2"><h3>Time</h3></div>   
+                                <div class="col-xs-4"><h3>Subject</h3></div>
+                                <div class="col-xs-4"><h3>Time</h3></div>   
                             </div>
+                        </div>
                             <?php include "../../components/getUserMessages.php" ?>
                     </div>
                     <!-- GROUPS -->
@@ -147,7 +188,7 @@
                     <button type='button' class='close' data-dismiss='modal'>&times;</button>
                     <h1>New Message</h1>
                     <div id="receiversList"></div>
-                    <input type="text" id="receiver" name="receiver" placegolder="To" onchange="checkEnter()" onkeyup="suggestReceiver()" placeholder="To" list="receiverDatalist"/>&nbsp;<button class='btn btn-default btn-lg smallCheck'><span class='glyphicon glyphicon-ok'</span></button>
+                    <input type="text" id="receiver" name="receiver" onchange="checkEnter()" onkeyup="suggestReceiver()" placeholder="To" list="receiverDatalist"/>&nbsp;<button class='btn btn-default btn-lg smallCheck'><span class='glyphicon glyphicon-ok'</span></button>
                     <datalist onchange="checkEnter()" id="receiverDatalist">
                         <option></option>
                     </datalist><br><br>
@@ -179,9 +220,21 @@
     
     <script>
         $("#msg").keyup( function() {
-            //$("#output_div").html( $(this).val().replace(/[\r\n]/g, "<br />")); 
+            $("#output_div").html( $(this).val().replace(/[\r\n]/g, "<br />")); 
         });
-        
+                    
+
+        function getMessageContent(id){
+            $.ajax({
+				type: "post",
+				url: "../../components/getUserMessageContent.php",
+				data:"id="+id,
+				success:function(data){
+                    $("#"+id).attr('class', 'row messageRowRead');
+					$("#messageContent").html(data);
+				}
+			});
+        }
 
     </script>
     

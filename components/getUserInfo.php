@@ -23,23 +23,22 @@ if(!file_exists ('../../database/userdbconnect.php')){
 	//USER INFORMATION OF CURRENTLY LOGGED IN USER = OWN INFO
 	$user_id = $user_email = $user_firstname = $user_lastname = $user_phonenumber = $user_avatar = $user_bio = $user_skills = $user_dob = $user_profession = $user_gender = $user_maritalstatus = $user_address = $user_city = $user_joindate = $user_country = "";
 $sql = "
-	SELECT user.user_id, user.user_firstname, user.user_lastname, user.user_contact_email, user.user_phonenumber, user.user_avatar, user.user_profession, user.user_bio, user.user_skills, user.user_dob, user.user_maritalstatus, user.user_address, user.user_country, user.user_city, user.user_joindate, profession.profession_id, profession.profession_field_id, profession.profession_name, field.field_id, field.field_name, country.country_id, country.country_name, gender.gender_id, gender.gender_name
-	FROM user 
+	SELECT users.user_id, users.user_firstname, users.user_lastname, users.user_contact_email, users.user_phonenumber, users.user_avatar, users.user_profession, users.user_bio, users.user_skills, users.user_dob, users.user_maritalstatus, users.user_address, users.user_country, users.user_city, users.user_joindate, profession.profession_id, profession.profession_field_id, profession.profession_name, field.field_id, field.field_name, country.country_id, country.country_name, gender.gender_id, gender.gender_name
+	FROM users
 	INNER JOIN profession 
-	ON user.user_profession=profession.profession_id 
+	ON users.user_profession=profession.profession_id 
 	INNER JOIN field 
 	ON profession.profession_field_id=field.field_id
 	INNER JOIN country
-	ON user.user_country=country.country_id
+	ON users.user_country=country.country_id
 	INNER JOIN gender
-	ON user.user_gender = gender.gender_id
-	WHERE user.user_username = '$user'
+	ON users.user_gender = gender.gender_id
+	WHERE users.user_username = '$user'
 	";
 	
 $res = $conn->query($sql);
 
 if($res->num_rows>0){
-
 	while($row = $res->fetch_assoc()){
         
 		$user_id = $row['user_id'];
@@ -64,7 +63,7 @@ if($res->num_rows>0){
 
 
 else {
-        echo "<br><br><br>no". $_SESSION['user_username'];
+        echo "<br><br><br>Something went wrong for when fetching user info for user: ". $_SESSION['user_username'];
 		$user_id = $user_email = $user_firstname = $user_lastname = $user_phonenumber = $user_bio = $user_skills = $user_dob = $user_profession = $user_gender = $user_maritalstatus = $user_address = $user_city = $user_joindate = $user_country = "N/A";
 	}
 
