@@ -6,7 +6,7 @@
 	
 	$user_username = $_SESSION['user_username'];
 	$user_avatar = "";
-	$sql = "SELECT user_avatar, user_username FROM user WHERE user_username = '$user_username'";
+	$sql = "SELECT user_avatar, user_username FROM users WHERE user_username = '$user_username'";
 	$res = $conn->query($sql);
 	if($res->num_rows>0){
 		while($row = $res->fetch_Assoc()) {

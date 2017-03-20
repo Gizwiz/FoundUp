@@ -25,6 +25,7 @@
 				$fname_error = $lname_error = $email_error = $phonenumber_error = $pw_error = false;
 				$user_firstname = $user_lastname = $user_email = $user_phonenumber = $user_password = $user_confirmpassword = "";
 				$user_username = "";
+                $user_id = "";
 				
 				if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					// collect value of input field
@@ -83,7 +84,7 @@
 					
 					} else {
 						//password hasing
-						$user__hashed_password = password_hash($user_password, PASSWORD_DEFAULT);
+						$user_hashed_password = password_hash($user_password, PASSWORD_DEFAULT);
 						$pw_css = $okay_css;
 						$pw_error = false;
 					}
@@ -129,7 +130,7 @@
 						/* checks for matching email in user databse*/
 						include 'database/userdbconnect.php';
 						//check if an individual account with the email already exists
-						$sql = "SELECT user_email FROM user";
+						$sql = "SELECT user_email FROM users";
 						$res = $conn->query($sql);
 
 						
@@ -147,45 +148,37 @@
 							//if nothing found push info into the database and create account							
 							if(!$error){
                                 $sql = "
-                                    INSERT INTO user (
+                                    INSERT INTO users (
                                         user_firstname,
                                         user_lastname,
                                         user_email,
                                         user_contact_email,
-                                        user_phonenumber,
                                         user_password,
                                         user_username,
-                                        user_avatar,
-                                        user_country,
-                                        user_joindate,
-                                        user_profession,
-                                        user_gender
-
+                                        user_joindate
                                     )
                                     VALUES (
                                         '$user_firstname',
                                         '$user_lastname',
                                         '$user_email',
                                         '$user_email',
-                                        '$user_phonenumber',
                                         '$user_hashed_password',
                                         '$user_username',
-                                        '../../resources/userAvatars/person.jpg',
-                                        1,
-                                        CURRENT_TIMESTAMP,
-                                        1,
-                                        1
-
+                                        CURRENT_TIMESTAMP
                                     )
                                 ";
                                 session_start();
-                                mysqli_query($conn,$sql) or die(mysqli_error($conn));
+                                if (mysqli_query($conn, $sql)) {
+                                    echo "New user created successfully";
+                                } else {
+                                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                                }
                                 
                                 $_SESSION['user_username'] = $user_username;
                                 
                                                                 
                                 $sql = "
-                                    SELECT user_id FROM user WHERE user_username = '$user_username'                                
+                                    SELECT user_id FROM users WHERE user_username = '$user_username'                                
                                 ";
                                 $res = $conn->query($sql);
 
@@ -197,12 +190,17 @@
                                 
                                 $sql = "
                                     INSERT INTO mailbox (
-                                        user_id,
+                                        user_id
                                     ) VALUES (
                                         '$user_id'
                                     )
                                 ";
-                                mysqli_query($conn,$sql) or die(mysqli_error($conn));
+                                
+                               if (mysqli_query($conn, $sql)) {
+                                    echo "User's mailbox created successfully";
+                                } else {
+                                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                                }
                                 header('Location: application/user/userFrontpage.php?user_username='.$user_username);
 							}
 							

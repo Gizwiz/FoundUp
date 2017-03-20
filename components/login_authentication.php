@@ -12,7 +12,7 @@
 		$login_password = $_POST['password'];
 		
 		
-		$sql = "SELECT user_email, user_password, user_username FROM user WHERE user_email = '$login_email' ";
+		$sql = "SELECT user_email, user_password, user_username FROM users WHERE user_email = '$login_email' ";
 		$res = $conn->query($sql);
 		
 		if (!$res) {

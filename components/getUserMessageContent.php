@@ -19,12 +19,12 @@ $id=clean_input($_POST['id']);
 
 //sender info
 $sql = "
-    SELECT messages.message_id, messages.sender_mailbox_id, messages.message_subject, messages.message_text, messages.message_send_date, messages.message_read, mailbox.mailbox_id, mailbox.user_id, user.user_id, user.user_firstname, user.user_lastname, user.user_avatar
+    SELECT messages.message_id, messages.sender_mailbox_id, messages.message_subject, messages.message_text, messages.message_send_date, messages.message_read, mailbox.mailbox_id, mailbox.user_id, users.user_id, users.user_firstname, users.user_lastname, users.user_avatar
     FROM messages
     INNER JOIN mailbox
     ON messages.sender_mailbox_id = mailbox.mailbox_id
-    INNER JOIN user
-    ON mailbox.user_id = user.user_id
+    INNER JOIN users
+    ON mailbox.user_id = users.user_id
     WHERE messages.message_id = '$id'
 ";
 
@@ -38,17 +38,38 @@ if($res->num_rows>0){
         $firstname = $row['user_firstname'];
         $lastname = $row['user_lastname'];
         $user_id = $row['user_id'];
+        $message_id = $row['message_id'];
+        $message_read = $row['message_read'];
     }
+} else {
+    
+    exit;
 }
+
 
 echo "
     <div class='modal-header'>
-
-        <div class='col-xs-12'>
-        <button type='button' class='close' data-dismiss='modal'>&times;</button>
-            <img style='float:left;width:6em; height:6em;display:inline-block;margin-top 20%;margin-right: 3%;' src='".$avatar."'>
-            <h1 style='display:inline-block'>From: ".$firstname." ".$lastname."<h1>
-            <h2 style='display:inline-block'>Subject: ".$subject."</h2>
+        <div class='row'>
+            <div class='col-xs-12'>
+                <button type='button' class='close' data-dismiss='modal'>&times;</button>
+            </div>
+        </div>
+        
+        <div class='row' style='text-align:center'>
+            <div class='col-lg-2'>
+                <img style='width:8em; height:8em;' src='".$avatar."'>
+            </div>
+            <div class='col-lg-6'>
+                <h1>From: ".$firstname." ".$lastname."<h1> 
+                <h2>Subject: ".$subject."</h2>
+            </div>
+            <div class='col-lg-2'>
+                <form action='../shared/profile.php' method='post'>
+                    <input type='hidden' name='user_id' value='".$user_id."'/>
+                    <input type='submit' class='btn btn-default btn-lg' name='viewUserProfile' style='margin-top:13%;' value='View Profile'/>
+                </form>
+            </div>
+                
        </div>
     </div>
     <div class='modal-body'>
@@ -60,14 +81,19 @@ echo "
     </div>
     
     <div class='modal-footer'>
-            <form action='../shared/profile.php' method='post' style='display:inline-block width:55%;'>
-                <input type='hidden' name='user_id' value='".$user_id."'/>
-                <input type='submit' class='btn btn-default btn-lg' name='viewUserProfile' style='margin-top:2%;' value='View Profile'/>
-                <input type='' class='btn btn-default btn-lg' name='closeMessageModal' value='Close' data-dismiss='modal'/>
-            </form>
+            <button type='button' class='btn btn-default btn-lg' name='closeMessageModal' data-dismiss='modal'>Close</button
     </div>
 ";
 
+//if message status is unread, update it to be read. Bool 0/1 where 0=unread, 1=read.
+if($message_read == 0){
+    $sql = "UPDATE messages SET message_read = 1 WHERE message_id = '$message_id'";
+    if ($conn->query($sql) === TRUE) {
+        echo "Message marked as read";
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
+}
 function clean_input($data){
 	//clean data to prevent sql injection
 	$data = trim($data);

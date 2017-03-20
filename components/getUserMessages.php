@@ -22,13 +22,14 @@ if(!file_exists ('../../database/userdbconnect.php')){
 $user_username = $_SESSION['user_username'];
 
 $sql = "
-    SELECT user.user_id, user.user_username, mailbox.user_id, mailbox.mailbox_id, messages.sender_mailbox_id, messages.receiver_mailbox_id, messages.message_id, messages.message_subject, messages.message_text, messages.message_send_date, messages.message_read
-    FROM user
+    SELECT users.user_id, users.user_username, mailbox.user_id, mailbox.mailbox_id, messages.sender_mailbox_id, messages.receiver_mailbox_id, messages.message_id, messages.message_subject, messages.message_text, messages.message_send_date, messages.message_read
+    FROM users
     INNER JOIN mailbox
-    ON user.user_id = mailbox.user_id
+    ON users.user_id = mailbox.user_id
     INNER JOIN messages
     ON mailbox.mailbox_id = messages.receiver_mailbox_id
-    WHERE user.user_username = '$user_username'
+    WHERE users.user_username = '$user_username'
+    ORDER BY message_send_date DESC LIMIT 50
 ";
 
 $res = $conn->query($sql);
@@ -39,12 +40,14 @@ if($res->num_rows>0){
         $subject = $row['message_subject'];
         $time = $row['message_send_date'];
         $messageId = $row['message_id'];
-        $sql = "SELECT messages.sender_mailbox_id, mailbox.mailbox_id, mailbox.user_id, user.user_id, user.user_firstname, user.user_lastname, user.user_avatar
+        $message_read = $row['message_read'];
+        
+        $sql = "SELECT messages.sender_mailbox_id, mailbox.mailbox_id, mailbox.user_id, users.user_id, users.user_firstname, users.user_lastname, users.user_avatar_small
             FROM messages
             INNER JOIN mailbox
             ON messages.sender_mailbox_id=mailbox.mailbox_id
-            INNER JOIN user
-            ON mailbox.user_id=user.user_id
+            INNER JOIN users
+            ON mailbox.user_id=users.user_id
             WHERE messages.sender_mailbox_id = '$sender'
         ";
         $resB = $conn->query($sql);
@@ -52,20 +55,31 @@ if($res->num_rows>0){
             while ($row=$resB->fetch_assoc()){
                 $senderFirstname = $row['user_firstname'];
                 $senderLastname = $row['user_lastname'];
-                $sender_avatar = $row['user_avatar'];
+                $sender_avatar = $row['user_avatar_small'];
             }
         } else {
             echo "Error";
         }
         
+        if($message_read == 1){
         echo"
-        <div class='row messageRow' id='".$messageId."' onclick='getMessageContent(this.id)'>
+        <div class='row messageRowRead' id='".$messageId."' onclick='getMessageContent(this.id)'>
             <div class='col-xs-1'><input type='checkbox' value='".$messageId."'></div>
             <div class='col-xs-3' data-toggle='modal' data-target='#messageContentModal'><img src='".$sender_avatar."' alt=''><p>".$senderFirstname.' '.$senderLastname."</p></div>
-            <div class='col-xs-6' data-toggle='modal' data-target='#messageContentModal'><p>".$subject."</p></div>
-            <div class='col-xs-2' data-toggle='modal' data-target='#messageContentModal'><p>".$time."</p></div> 
+            <div class='col-xs-4' data-toggle='modal' data-target='#messageContentModal'><p>".$subject."</p></div>
+            <div class='col-xs-4' data-toggle='modal' data-target='#messageContentModal'><p>".$time."</p></div> 
         </div>
             ";
+        } else {
+        echo"
+            <div class='row messageRowUnread' id='".$messageId."' onclick='getMessageContent(this.id)'>
+            <div class='col-xs-1'><input type='checkbox' value='".$messageId."'></div>
+            <div class='col-xs-3' data-toggle='modal' data-target='#messageContentModal'><img src='".$sender_avatar."' alt=''><p>".$senderFirstname.' '.$senderLastname."</p></div>
+            <div class='col-xs-4' data-toggle='modal' data-target='#messageContentModal'><p>".$subject."</p></div>
+            <div class='col-xs-4' data-toggle='modal' data-target='#messageContentModal'><p>".$time."</p></div> 
+        </div>
+        ";
+        }
         
     }
 } else {
