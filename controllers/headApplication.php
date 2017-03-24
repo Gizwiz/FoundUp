@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php 
 include '../../components/getUserInfo.php';
 //for enabling SSL
