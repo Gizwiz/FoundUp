@@ -21,6 +21,7 @@ $user_username = $_SESSION['user_username'];
 $user_id = "";
 $receiver_mailbox_id = $sender_mailbox_id = "";
 $msg = nl2br($msg);
+$message_read = 0;
 $sql = "
     SELECT user_id, user_username FROM users WHERE user_username = '$user_username'
 ";
@@ -49,6 +50,10 @@ if($res->num_rows>0){
     }
 }
 
+$stmt = $conn->prepare("INSERT INTO messages ( sender_mailbox_id, receiver_mailbox_id, message_subject, message_text)
+	VALUES(?, ?, ?, ?)");
+$stmt->bind_param("ssss", $sender_mailbox_id, $receiver_mailbox_id, $subj, $msg);
+
 //for each receiver create message
 foreach($receiver as $rec){
     
@@ -65,39 +70,15 @@ foreach($receiver as $rec){
     if($res->num_rows>0){
         while($row=$res->fetch_assoc()){
             $receiver_mailbox_id = $row['mailbox_id'];
-            
         }
     }
     
-    #inert into message
-    $sql = "
-        INSERT INTO messages
-        (
-        sender_mailbox_id,
-        receiver_mailbox_id,
-        message_subject,
-        message_text,
-        message_send_date,
-        message_read
-        )
-        VALUES
-        (
-        '$sender_mailbox_id',
-        '$receiver_mailbox_id',
-        '$subj',
-        '$msg',
-        CURRENT_TIMESTAMP,
-        0
-        )
-    ";
-    
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: user not found or mailbox does not exist. <button class='btn btn-default smallcross' onclick='hideErrMsg()'>&times;</button>";
-    }
+	
+	$stmt->execute();
+	
 }
-
+$stmt->close();
+$conn->close();
    
 function clean_input($data){
 	//clean data to prevent sql injection
