@@ -14,9 +14,7 @@
 
         var receivers = [];
         var receiverIdTitle = "";
-        
 
-        
         function suggestReceiver(){
             
             $(document).ready(function(){
@@ -35,10 +33,7 @@
                        });
                     }
                 });
-
-                
             });
-            
         }
         
         function sendMessage(){
@@ -74,20 +69,12 @@
                         //clear out compose message and promt user with message sent info
                     }
                 });
-
-                
             });
         }
         
         function hideErrMsg(){
             $("#msgErr").hide();
         }
-        
-        function setReceiverId(){
-
-        }
-
-
         
         function checkEnter(){
 
@@ -169,17 +156,10 @@
                         <p>--</p>
                     </div>
                 </div>
-            
             </div>
-            
         </div>
-        
     </div>
 
-    
-    
-    <div id="output_div"></div>
-    
     <!-- MODAL: compose a new message -->
     <div id="composeMessageModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -238,6 +218,6 @@
 
     </script>
     
-    <div id="output_div"></div>
+    <div style="display:none" id="output_div"></div>
 
 </body>
