@@ -365,6 +365,10 @@ li{
     margin-right:1%;
 }
 
+#output-div{
+	visibility:hidden;
+}
+
 .smallcheck{
     color:green;
     position:relative;
@@ -445,6 +449,12 @@ li{
     width: 25vh;
 }
 
+/*Sent Messages*/
+
+#sent{
+	text-align: left;
+}
+
 /*SEARCH*/
 
 #searchPills input{
@@ -458,6 +468,14 @@ li{
 	margin-bottom: -3%;
 }
 
+#searchProfessionText{
+	font-size: 16px;
+	margin-top:-2%;
+}
+
+#searchProfession{
+	margin-top: -2%;
+}
 
 .searchAvatar{
 	width: 6em;
@@ -477,6 +495,7 @@ li{
 	border-bottom: 1px solid #dfdfdf;
 	height: 26vh;
 }
+
 
 
 #suggestionResults{
@@ -686,7 +705,6 @@ li{
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-    
 }
 .intro-header .site-heading,
 .intro-header .post-heading,

@@ -72,8 +72,7 @@ foreach($receiver as $rec){
             $receiver_mailbox_id = $row['mailbox_id'];
         }
     }
-    
-	
+
 	$stmt->execute();
 	
 }
