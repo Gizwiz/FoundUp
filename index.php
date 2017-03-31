@@ -6,13 +6,14 @@
 <?php include 'controllers/navFrontEnd.php'; ?>
 	
     <!-- Page Header --> 
-     <header class="intro-header" style="background-color: white">
+     <header class="intro-header" style="background-image: url(resources/images/mainBackground.jpg); height:65vh;">
 	 <!--style="background-image: url(resources/images/mainBackground2.jpg);--> 
-         <div class="container-fluid"> 
-             <div class="row"> 
-				<div class="col-md-8"> 
+        <div class="container-fluid"> 
+			<div class="row" style="margin-top: 3%"> 
+				<div class="col-xs-1"> </div>
+				<div class="col-xs-6"> 
 				<!-- Carousel -->
-					 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+					<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
 						<!-- Indicators -->
 						  <ol class="carousel-indicators">
 							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -41,7 +42,7 @@
 							</div>
 							
 						</div> 
-                 </div>
+					</div>
 				 
 		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -53,8 +54,8 @@
 		</a>
 				 
              </div> 
-                 
-            <div class="col-md-4" id="frontPageLogin">
+				<div class="col-xs-1"> </div>
+            <div class="col-xs-4" id="frontPageLogin">
                 <h2>Sign In</h2>
                 <form name="loginform" action="components/login_authentication.php" method="post">
 					<input type="text" class="form-control" name="email" placeholder="Email" required></input>
