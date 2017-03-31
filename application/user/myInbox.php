@@ -126,7 +126,7 @@
                     <li class="active"><a data-toggle="pill" href="#messages">Messages</a></li>
                     <li><a data-toggle="pill" href="#sent">Sent</a></li>
                     <li><a data-toggle="pill" href="#groups">Groups</a></li>
-                    <li><a data-toggle="pill" href="#saved">Saved</a></li>
+                    <!--<li><a data-toggle="pill" href="#saved">Saved</a></li>-->
                 </ul>
                 <!-- MESSAGES -->
                 <div class="tab-content">
@@ -145,12 +145,17 @@
                     </div>
                     <!-- GROUPS -->
                     <div id="sent" class="tab-pane fade">
+						<div class="row">
+							<h1>Sent Messages</h1>
+						</div>
                         <?php include "../../components/getUserSentMessages.php" ?>
                     </div>
                     <!-- SENT -->
-                    <div id="groups" class="tab-pane fade">
-                         <?php include "../../components/getUserGroups.php" ?>
-                    </div>
+                    <!--
+					<div id="groups" class="tab-pane fade">
+                         <?php #include "../../components/getUserGroups.php" ?>
+                    </div> -->
+					
                     <!-- SAVED -->
                     <div id="saved" class="tab-pane fade">
                         <p>--</p>

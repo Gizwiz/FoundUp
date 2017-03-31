@@ -149,9 +149,9 @@
 										}
 									?>
 								</select>
-							</form>
-							Profession:
-
+							</form><br>
+							<p id="searchProfessionText" style="margin-top: -2%;">Profession:</p>
+	
 							<select name="user_profession" id="searchProfession" onchange="suggestMatch()">
 								<option>--Select your profession--</option>
 							</select>
