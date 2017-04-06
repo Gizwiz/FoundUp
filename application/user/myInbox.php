@@ -11,6 +11,18 @@
 
     
     <script type="text/javascript">
+        
+        //load user messages on document ready
+        $(document).ready(function(){
+           $.ajax({
+               type:"POST",
+                url:"../../components/getUserMessages.php",
+                cache: true,
+                success: function(data){
+                    $("#userMessages").html(data);
+                }
+            }); 
+        });
 
         var receivers = [];
         var receiverIdTitle = "";
@@ -103,6 +115,25 @@
             }
         }
         
+        function getUserMessages(){
+            $.ajax({
+               type:"POST",
+                url:"../../components/getUserMessages.php",
+                success: function(data){
+                    $("#userMessages").html(data);
+                }
+            });
+        }
+        
+        function getUserSentMessages(){
+            $.ajax({
+               type:"POST",
+                url:"../../components/getUserSentMessages.php",
+                success: function(data){
+                    $("#sentMessages").html(data);
+                }
+            });
+        }
 
     </script>
     
@@ -123,16 +154,15 @@
         <div class="row" id="inboxBody">
             <div class="col-xs-12 section"> 
                 <ul class="nav nav-pills nav-justified" >
-                    <li class="active"><a data-toggle="pill" href="#messages">Messages</a></li>
-                    <li><a data-toggle="pill" href="#sent">Sent</a></li>
+                    <li class="active"><a data-toggle="pill" href="#messages" onclick="getUserMessages()">Messages</a></li>
+                    <li><a data-toggle="pill" href="#sent" onclick="getUserSentMessages()">Sent</a></li>
                     <li><a data-toggle="pill" href="#groups">Groups</a></li>
-                    <!--<li><a data-toggle="pill" href="#saved">Saved</a></li>-->
                 </ul>
                 <!-- MESSAGES -->
                 <div class="tab-content">
                     <div id="messages" class="tab-pane fade in active">
                         <div class="row">
-                            <h1 style="display:inline-block;">Messages</h1>
+                            <h1 style="display:inline-block;margin-left:2%;">Messages</h1>
                             <button id="inboxComposeButton" data-target="#composeMessageModal" data-toggle="modal">Compose Message</button>
                             <div class="row" id="messagesTopBar">
                                 <div class="col-xs-1"></div>
@@ -141,25 +171,32 @@
                                 <div class="col-xs-4"><h3>Time</h3></div>   
                             </div>
                         </div>
-                            <?php include "../../components/getUserMessages.php" ?>
-                    </div>
-                    <!-- GROUPS -->
-                    <div id="sent" class="tab-pane fade">
-						<div class="row">
-							<h1>Sent Messages</h1>
-						</div>
-                        <?php include "../../components/getUserSentMessages.php" ?>
+                            <!-- get user messages with ajax from onclick in nav-pills and on load -->
+                        <div id="userMessages">
+                    
+                        </div>
                     </div>
                     <!-- SENT -->
-                    <!--
+                    <div id="sent" class="tab-pane fade">
+                        <div class="row">
+                            <h1 style="display:inline-block;margin-left:2%;">Sent Messages</h1>
+                            <div class="row" id="sentTopBar">
+                                <div class="col-xs-1"></div>
+                                <div class="col-xs-3"><h3>Receiver</h3></div>
+                                <div class="col-xs-4"><h3>Subject</h3></div>
+                                <div class="col-xs-4"><h3>Time</h3></div>   
+                            </div>
+                        </div>
+                        <div id="sentMessages">
+                            <!-- get sent messages with ajax from onclick in nav-pills-->
+                        </div>
+                    </div>
+                    
+                    <!-- GROUPS -->
 					<div id="groups" class="tab-pane fade">
                          <?php #include "../../components/getUserGroups.php" ?>
-                    </div> -->
-					
-                    <!-- SAVED -->
-                    <div id="saved" class="tab-pane fade">
-                        <p>--</p>
-                    </div>
+                    </div> 
+
                 </div>
             </div>
         </div>

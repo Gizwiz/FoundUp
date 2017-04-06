@@ -29,7 +29,7 @@ $sql = "
     INNER JOIN messages
     ON mailbox.mailbox_id = messages.receiver_mailbox_id
     WHERE users.user_username = '$user_username'
-    ORDER BY message_send_date DESC LIMIT 50
+    ORDER BY message_send_date DESC
 ";
 
 $res = $conn->query($sql);
@@ -72,7 +72,7 @@ if($res->num_rows>0){
             ";
         } else {
         echo"
-            <div class='row messageRowUnread' id='".$messageId."' onclick='getMessageContent(this.id)'>
+        <div class='row messageRowUnread' id='".$messageId."' onclick='getMessageContent(this.id)'>
             <div class='col-xs-1'><input type='checkbox' value='".$messageId."'></div>
             <div class='col-xs-3' data-toggle='modal' data-target='#messageContentModal'><img src='".$sender_avatar."' alt=''><p>".$senderFirstname.' '.$senderLastname."</p></div>
             <div class='col-xs-4' data-toggle='modal' data-target='#messageContentModal'><p>".$subject."</p></div>
