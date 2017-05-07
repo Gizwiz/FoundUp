@@ -90,13 +90,13 @@
 			<div class="col-md-8">
 				
 				<ul class="nav nav-pills nav-justified">
-					<li><a data-toggle="pill" href="#editContactInformation">Contact Information</a></li>
+					<li class="active"><a data-toggle="pill" href="#editContactInformation">Contact Information</a></li>
 					<li><a data-toggle="pill" href="#editBasicInformation">Basic Information</a></li>
-					<li class="active"><a data-toggle="pill" href="#editWorkInformation">Work and Projects</a></li>
+					<li><a data-toggle="pill" href="#editWorkInformation">Work and Projects</a></li>
 				</ul>
 				<div class="tab-content">
 				<!-- CONTACT INFORMATION -->
-					<div id="editContactInformation" class="tab-pane fade in" style="height: 50vh">
+					<div id="editContactInformation" class="tab-pane fade in active" style="height: 50vh">
 									
 						<form action="../../components/saveProfileEdits.php" method="post" style="text-align:left">
 							<h2 style="text-align: center">Contact Information</h2>
@@ -120,7 +120,7 @@
 					</div>
 					
 					<!-- WORK INFORMATION -->
-					<div id="editWorkInformation" class="tab-pane fade in active" style="height: 50vh">
+					<div id="editWorkInformation" class="tab-pane fade" style="height: 50vh">
 
 						<h2 style="display:inline-block;">Add an entry: &nbsp;</h2>
 						<!-- Trigger Modal Button -->
@@ -227,7 +227,8 @@
 				<h2 class="modal-title">Add Work Information</h2>
 			</div>
 			<div class="modal-body">
-				<form action="../../components/editUserWorks.php" class="form-group" method="post">
+				<form action="../../components/editUserWork.php" class="form-group" method="post">
+                    <input type="hidden" name="id" value="<?php echo $id ?>" >
 					Title: <input type="text" name="work_title" value="<?php echo $work_title ?>" placeholder="Title of work / Name of project"><br>
 					Description (max. 512 characters): <textarea name="work_description" style="width:100%; height: 20%; resize:none;" maxlength="512" placeholder="Description"><?php echo $work_description ?></textarea><br>
 					URL: <input type="text" name="work_url" value="<?php echo $work_url ?>"placeholder="http://www.url.com" ><br>

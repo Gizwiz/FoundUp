@@ -174,6 +174,10 @@
 
 					<!-- COMPANY SEARCH PILL -->
 					<div id="searchForCompany" class="tab-pane fade in <?php echo $companySearchActive ?>">
+                        <br>
+                        <h1 style="text-align:center">Currently under construction.</h1>
+                        <h3 style="text-align:center">Please refer to "people" search for evaluation. This will function identically. Thank you.</h3>
+                        
 					</div>
 					<!-- END COMPANY SEARCH PILL -->
 

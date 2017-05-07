@@ -151,11 +151,13 @@
 			?>
 			
 			<div class="col-lg-12">
-			
+			 <h3 style="text-align:center;color:red">Registering as a company is currently disabled because of database problems in Azure. Please register <a href=registerindividual.php>as an individual</a> instead.</a></h3>
 				<h1>Register as a company</h1>
 				<h4><br>Register as <a href=registerindividual.php>an individual</a> instead<br><br></h4>
 				
-				<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" autocomplete="off">
+				<!--<form action="<?php #echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" autocomplete="off">-->
+                <!-- Company registering disabled because of non-functionining database in azure -->
+                    <form>
 					<div id="companyRegErrMsg">
 						<span><?php echo $errmsg; ?></span>
 					</div><br>
@@ -165,7 +167,8 @@
 					<input type="password" class="form-control" name="company_confirmpassword" value="<?php echo $company_confirmpassword;?>"  style="<?php echo $pw_css; ?>" placeholder="Confirm Password" required><br>
 					<input type="submit" class="registerButton" name="regButtonCompany" value="Register" required>					
 
-				</form>
+				    </form>
+               
 
 			
 			</div>

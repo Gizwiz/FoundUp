@@ -44,9 +44,6 @@
 		}
 		//no matching result found
 		else {
-			
-
-			
 		
 		$conn->close();
 		

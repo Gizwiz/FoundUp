@@ -36,15 +36,17 @@
 					 <li>
 						<a href="../../application/user/myProfile.php?user=<?php echo $_SESSION['user_username']; ?>">My Profile</a>
 					 </li>
+                     <!--
 					 <li>
 					 	<a href="../../application/user/myContacts.php?user=<?php echo $_SESSION['user_username']; ?>">Contacts</a>
-					 </li>
+					 </li>-->
                      <li> 
                          <a href="../../application/user/myInbox.php?user=<?php echo $_SESSION['user_username']; ?>">Messages</a> 
                      </li>
+                     <!--
 					 <li>
 					 	<a href="../../application/user/userSettings.php?user=<?php echo $_SESSION['user_username']; ?>">Settings</a>
-					 </li>
+					 </li>-->
                      <li> 
                          <a href="../../components/logout.php">Log out</a> 
                      </li> 
